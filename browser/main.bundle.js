@@ -3754,21 +3754,82 @@ var Story1Component = (function () {
             titre: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */](),
             description: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]()
         });
+        this.handleKeyEvents();
     };
-    Story1Component.prototype.onPageClick = function (event) {
-        event.preventDefault();
-        console.log(event.currentTarget);
-        if (event && event.target) {
-            if (event.target['id'] && event.target['id'] !== 'description') {
+    Story1Component.prototype.handleKeyEvents = function () {
+        var that = this;
+        $(document).ready(function () {
+            $("#description").on('keydown', function (e) {
+                if (e.key == "#") {
+                    //  alert("on key down: "+ e.key);
+                    that.getSelectionCoords();
+                    var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                    that.pasteKeywordHtml(tempEl);
+                    var contentEditable = document.getElementById('description');
+                    var lastItem = document.getElementById('keym');
+                    contentEditable.focus();
+                    that.selectElementText(lastItem, window);
+                }
+            });
+            $("#description").on('keyup', function (e) {
+                console.log(e);
+                if (e.key == "#") {
+                    //alert("on key up: "+ e.key);
+                    that.autosearch = true;
+                    var cords = that.getSelectionCoords();
+                    //var tempEl = "<span class='keymarker'>&nbsp;</span>";
+                    //  that.pasteKeywordHtml(tempEl);
+                    that.savedCords = cords;
+                }
+                else if (e.key == " ") {
+                    //alert("on key up: "+ e.key);
+                    that.autosearch = false;
+                    that.autosearchtext = '';
+                    $('.autotext').hide();
+                    that.keywordShow = false;
+                }
+                if (!that.autosearch) {
+                    if (e.key.length === 1 && (e.key != '#')) {
+                        if (that.checkStr(e.key)) {
+                            that.autosearchtext = that.autosearchtext + e.key;
+                        }
+                    }
+                }
+                console.log("autosearchtext: " + that.autosearchtext);
+                if (that.autosearch) {
+                    console.log($("#keymarker").text());
+                    var inputKeyword = $(".keymarker").text();
+                    var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
+                    console.log(searchKeyword);
+                    if (searchKeyword == "") {
+                        $('.autotext').hide();
+                        $('.list2').hide();
+                        $(".keymarker").remove();
+                    }
+                    else {
+                        that.updateKeywordListByStr(searchKeyword);
+                        var postCss = that.getAutoListPos();
+                        $('.autotext').css('left', 'auto').css('right', 'auto');
+                        $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
+                    }
+                }
+            });
+        });
+    };
+    Story1Component.prototype.onPageClick = function (e) {
+        e.preventDefault();
+        //console.log(e.currentTarget);
+        if (e && e.target) {
+            if (e.target['id'] && e.target['id'] !== 'description') {
                 $('.autotext').hide();
                 $('.list2').hide();
                 // $("#keymarker").remove();
             }
         }
     };
-    Story1Component.prototype.selectKeyword = function (event, keywordObj) {
-        console.log(keywordObj);
-        event.preventDefault();
+    Story1Component.prototype.selectKeyword = function (e, keywordObj) {
+        //console.log(keywordObj);
+        e.preventDefault();
         this.selectedKeyword = keywordObj;
         // console.log(this.selectedKeyword);
         setTimeout(function (that) {
@@ -3799,73 +3860,81 @@ var Story1Component = (function () {
         this.selectedKeyword = selectedKeyword;
         // console.log(this.selectedKeyword);
     };
-    Story1Component.prototype.selectKeywordCat = function (event, keywordCat) {
+    Story1Component.prototype.selectKeywordCat = function (e, keywordCat) {
         this.selectedCategory = keywordCat;
         var pastekeyword = this.selectedKeyword.keyword;
         pastekeyword.substring(1);
-        var target = event.target || event.srcElement || event.currentTarget;
+        var target = e.target || e.srcElement || e.currentTarget;
         var currEl = '<span contenteditable="false" style="color:' + this.selectedCategory.color + '">' + pastekeyword + '</span>';
         currEl = currEl + "&nbsp;";
         this.pasteKeywordHtml(currEl);
     };
-    Story1Component.prototype.onClick = function (event) {
-        event.preventDefault();
-        console.log(event.currentTarget);
-        if (event.currentTarget.id === 'description') {
+    Story1Component.prototype.getKeyCode = function (str) {
+        return str.charCodeAt(str.length);
+    };
+    Story1Component.prototype.onClick = function (e) {
+        e.preventDefault();
+        if (e.currentTarget.id === 'description') {
+            $('.autotext').hide();
+            $('.list2').hide();
+            // $(".keymarker").remove();
+        }
+    };
+    Story1Component.prototype.onKeyDown = function (e) {
+        // console.log("on key down: "+ e.key);
+        /*
+          if (e.key == "#") {
+          //  alert("on key down: "+ e.key);
+             this.getSelectionCoords();
+              var tempEl = "<span class='keymarker'>&nbsp;</span>";
+              this.pasteKeywordHtml(tempEl);
+          }*/
+    };
+    Story1Component.prototype.onKeyUp = function (e) {
+        /*
+        console.log("on key up: "+ e.key);
+        
+        if (e.key == "#") {
+          //alert("on key up: "+ e.key);
+          this.autosearch = true;
+          var cords = this.getSelectionCoords();
+          var tempEl = "<span class='keymarker'>&nbsp;</span>";
+              this.pasteKeywordHtml(tempEl);
+          this.savedCords = cords;
+        } else if (e.key == " ") {
+          //alert("on key up: "+ e.key);
+          this.autosearch = false;
+          this.autosearchtext = '';
+          $('.autotext').hide();
+          this.keywordShow = false;
+        }
+        if (this.autosearch) {
+          
+          if (e.key.length == '1' && (e.key != '#')) {
+            if (this.checkStr(e.key)) {
+              this.autosearchtext = this.autosearchtext + e.key;
+    
+            }
+    
+          }
+         //console.log($("#keymarker").text());
+         var inputKeyword = $(".keymarker").text();
+         var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
+         //console.log(searchKeyword);
+         if (searchKeyword == "") {
             $('.autotext').hide();
             $('.list2').hide();
             $(".keymarker").remove();
-        }
-    };
-    Story1Component.prototype.onKeyDown = function (event) {
-        console.log("on key down: " + event.key);
-        if (event.key == "#") {
-            alert("on key down: " + event.key);
-            this.getSelectionCoords();
-            var tempEl = "<span class='keymarker'>&nbsp;</span>";
-            this.pasteKeywordHtml(tempEl);
-        }
-    };
-    Story1Component.prototype.onKeyUp = function (event) {
-        console.log("on key up: " + event.key);
-        if (event.key == "#") {
-            alert("on key up: " + event.key);
-            this.autosearch = true;
-            var cords = this.getSelectionCoords();
-            this.savedCords = cords;
-        }
-        else if (event.key == " ") {
-            alert("on key up: " + event.key);
-            this.autosearch = false;
-            this.autosearchtext = '';
-            $('.autotext').hide();
-            this.keywordShow = false;
-        }
-        if (this.autosearch) {
-            if (event.key.length == '1' && (event.key != '#')) {
-                if (this.checkStr(event.key)) {
-                    this.autosearchtext = this.autosearchtext + event.key;
-                }
-            }
-            //console.log($("#keymarker").text());
-            var inputKeyword = $(".keymarker").text();
-            var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
-            //console.log(searchKeyword);
-            if (searchKeyword == "") {
-                $('.autotext').hide();
-                $('.list2').hide();
-                $(".keymarker").remove();
-            }
-            else {
-                this.updateKeywordListByStr(searchKeyword);
-                var postCss = this.getAutoListPos();
-                $('.autotext').css('left', 'auto').css('right', 'auto');
-                $('.autotext').css('top', this.savedCords.y + 18).css(postCss.pos, postCss.x).show();
-            }
-        }
+         } else {
+             this.updateKeywordListByStr(searchKeyword);
+             var postCss = this.getAutoListPos();
+             $('.autotext').css('left', 'auto').css('right', 'auto');
+             $('.autotext').css('top', this.savedCords.y+18).css(postCss.pos, postCss.x).show();
+         }
+        }*/
     };
     /*
-      onBlurDesc(event) {
+      onBlurDesc(e) {
         $('.autotext').hide();
         $('.list2').hide();
         $("#keymarker").remove();
@@ -4024,32 +4093,49 @@ var Story1Component = (function () {
         }
         return { x: x, y: y };
     };
+    Story1Component.prototype.selectElementText = function (el, win) {
+        win = win || window;
+        var doc = win.document, sel, range;
+        if (win.getSelection && doc.createRange) {
+            range = doc.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            sel = win.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+        else if (doc.body.createTextRange) {
+            range = doc.body.createTextRange();
+            range.moveToElementText(el);
+            range.select();
+        }
+    };
     Story1Component.prototype.onSubmit = function () {
     };
-    Story1Component.prototype.onKeytitre = function (event) {
-        this.titre_counter = event.target.value.length;
+    Story1Component.prototype.onKeytitre = function (e) {
+        this.titre_counter = e.target.value.length;
     };
-    Story1Component.prototype.onKey = function (event) {
-        //event.target.value = event.target.value.trim()
-        //console.log(event.target.value);
-        //console.log(event.target.value.trim().slice(-1));
-        if (event.target.value.trim().slice(-1) == "#") {
+    Story1Component.prototype.onKey = function (e) {
+        //e.target.value = e.target.value.trim()
+        //console.log(e.target.value);
+        //console.log(e.target.value.trim().slice(-1));
+        if (e.target.value.trim().slice(-1) == "#") {
             this.resultshow = false;
         }
-        if (!event.target.value.includes("#")) {
+        if (!e.target.value.includes("#")) {
             this.resultshow = true;
             this.resultshow2 = true;
         }
-        if (event.target.value == "") {
+        if (e.target.value == "") {
             this.resultshow = true;
         }
-        if (event.target.value.length >= 1) {
+        if (e.target.value.length >= 1) {
             this.textcount = false;
         }
         else {
             this.textcount = true;
         }
-        var tag = event.target.value.trim().split("#").pop();
+        var tag = e.target.value.trim().split("#").pop();
         // console.log(tag);
         if (tag == "Musique" || tag == "musique") {
             console.log("I am in true");
