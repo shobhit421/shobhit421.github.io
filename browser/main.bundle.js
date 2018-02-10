@@ -3880,6 +3880,17 @@ var Story1Component = (function () {
             // $(".keymarker").remove();
         }
     };
+    Story1Component.prototype.onKeyDown = function (e) {
+        // console.log("on key down: "+ e.key);
+        /*
+          if (e.key == "#") {
+          //  alert("on key down: "+ e.key);
+             this.getSelectionCoords();
+              var tempEl = "<span class='keymarker'>&nbsp;</span>";
+              this.pasteKeywordHtml(tempEl);
+          }*/
+    };
+    Story1Component.prototype.onKeyUp = function (e) {
         /*
         console.log("on key up: "+ e.key);
         
@@ -3896,29 +3907,6 @@ var Story1Component = (function () {
           this.autosearchtext = '';
           $('.autotext').hide();
           this.keywordShow = false;
-    Story1Component.prototype.onKeyDown = function (event) {
-        console.log("on key down: " + event.key);
-        if (event.key == "#") {
-           // alert("on key down: " + event.key);
-            this.getSelectionCoords();
-            var tempEl = "<span class='keymarker'>&nbsp;</span>";
-            this.pasteKeywordHtml(tempEl);
-        }
-    };
-    Story1Component.prototype.onKeyUp = function (event) {
-        console.log("on key up: " + event.key);
-        if (event.key == "#") {
-            //alert("on key up: " + event.key);
-            this.autosearch = true;
-            var cords = this.getSelectionCoords();
-            this.savedCords = cords;
-        }
-        else if (event.key == " ") {
-            //alert("on key up: " + event.key);
-            this.autosearch = false;
-            this.autosearchtext = '';
-            $('.autotext').hide();
-            this.keywordShow = false;
         }
         if (this.autosearch) {
           
