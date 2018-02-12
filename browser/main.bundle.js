@@ -3763,7 +3763,7 @@ var Story1Component = (function () {
             $("#description").on('keydown', function (e) {
                 /*
                 that.getSelectionCoords();
-                      var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                      var tempEl = "<span id='keym' class='keymarker'>&#x200b;</span>";
                       
                       that.pasteKeywordHtml(tempEl);
                       var contentEditable = document.getElementById('description');
@@ -3785,37 +3785,44 @@ var Story1Component = (function () {
                   }*/
             });
             $("#description").on('keyup', function (e) {
-                // console.log(e);
-                var inputChar = that.showCaretPos();
-                console.log("inputChar: " + inputChar);
+                var el = document.getElementById("description");
+                var inputChar = that.getCharacterPrecedingCaret(el); // that.showCaretPos();
+                console.log(inputChar);
                 if (!inputChar) {
                     inputChar = e.key;
                 }
                 if (inputChar == '#') {
+                    // var contentEditable = document.getElementById('description');
+                    var contentEl = document.getElementById('description');
                     that.autosearch = true;
                     var cords = that.getSelectionCoords();
                     var tempEl = "<span id='keym' class='keymarker'>" + inputChar + "</span>";
                     that.pasteKeywordHtml(tempEl);
                     that.savedCords = cords;
-                    var contentEditable = document.getElementById('description');
-                    var lastItem = document.getElementById('keym');
-                    contentEditable.focus();
-                    that.selectElementText(lastItem, window);
+                    var markerNode = document.getElementById('keym');
+                    contentEl.focus();
+                    that.selectElementText(markerNode, window);
+                    var htmlData = contentEl.innerHTML;
+                    htmlData = htmlData.replace(/#<span/gi, "<span");
+                    contentEl.innerHTML = htmlData;
+                    var range = document.createRange();
+                    var sel = window.getSelection();
+                    var i, matchNode;
+                    matchNode = document.getElementById("keym");
+                    console.log(matchNode);
+                    range.setStart(matchNode, 1);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                    // contentEl.focus();
+                    var cords = that.getSelectionCoords();
+                    that.savedCords = cords;
                 }
                 else if (inputChar == " ") {
                     that.autosearch = false;
-                    that.autosearchtext = '';
                     $('.autotext').hide();
                     that.keywordShow = false;
                 }
-                if (!that.autosearch) {
-                    if (inputChar.length === 1 && (inputChar != '#')) {
-                        if (that.checkStr(inputChar)) {
-                            that.autosearchtext = that.autosearchtext + inputChar;
-                        }
-                    }
-                }
-                // console.log("autosearchtext: "+ that.autosearchtext);
                 if (that.autosearch) {
                     var inputKeyword = $(".keymarker").text();
                     var searchKeyword = inputKeyword; // inputKeyword.substring(1, inputKeyword.length);
@@ -3834,72 +3841,75 @@ var Story1Component = (function () {
             });
         });
     };
-    Story1Component.prototype.inputMarker = function (inputChar) {
-        //if (inputChar == '#') {
-        this.autosearch = true;
-        var cords = this.getSelectionCoords();
-        this.savedCords = cords;
-        /*
-              //alert("on key up: "+ e.key);
-              if (this.keyHash) {
-                this.autosearch = true;
-                var cords = this.getSelectionCoords();
-                this.savedCords = cords;
-              } else {
-                this.keyHash = true;
-                this.getSelectionCoords();
-                var tempEl = "<span id='keym' class='keymarker'>#</span>";
-                  this.pasteKeywordHtml(tempEl);
-                //var contentEditable = document.getElementById('description');
-                //var lastItem = document.getElementById('keym');
-               //     contentEditable.focus();
-                 //     this.selectElementText(lastItem, window);
-                      this.inputMarker(inputChar);
-              }
-              */
-        //  } 
-    };
-    Story1Component.prototype.showCaretPos = function () {
-        var el = document.getElementById("description");
-        var elTxt = el.innerText;
-        // var elTxt = el.innerHTML;
-        // var caretPosEl = document.getElementById("caretPos");
-        var caretOffset = this.getCaretCharacterOffsetWithin(el);
-        var textBefore = elTxt.substring(0, caretOffset);
-        var textAfter = elTxt.substring(caretOffset, elTxt.length);
-        console.log(textBefore);
-        console.log(textAfter);
-        var lastChar = textBefore.substr(textBefore.length - 1);
-        console.log("lastChar: " + lastChar);
-        // caretPosEl.innerHTML = "Caret position: " + caretOffset;
-        // console.log(caretPosEl);
-        return lastChar;
-    };
-    Story1Component.prototype.getCaretCharacterOffsetWithin = function (element) {
-        var caretOffset = 0;
-        var doc = element.ownerDocument || element.document;
-        var win = doc.defaultView || doc.parentWindow;
-        var sel;
-        if (typeof win.getSelection != "undefined") {
-            sel = win.getSelection();
-            if (sel.rangeCount > 0) {
-                var range = win.getSelection().getRangeAt(0);
-                var preCaretRange = range.cloneRange();
-                preCaretRange.selectNodeContents(element);
-                preCaretRange.setEnd(range.endContainer, range.endOffset);
-                caretOffset = preCaretRange.toString().length;
-            }
-        }
-        else if ((sel = doc.selection) && sel.type != "Control") {
-            var textRange = sel.createRange();
-            var preCaretTextRange = doc.body.createTextRange();
-            preCaretTextRange.moveToElementText(element);
-            preCaretTextRange.setEndPoint("EndToEnd", textRange);
-            caretOffset = preCaretTextRange.text.length;
-        }
-        //  console.log(caretOffset);
-        return caretOffset;
-    };
+    /*
+    showCaretPos() {
+  
+      var el = document.getElementById("description");
+          var range = window.getSelection().getRangeAt(0);
+      var elTxt = el.innerText;
+     
+       var caretOffset = this.getCaretCharacterOffsetWithin(el);
+     // var caretOffset = this.getCharacterOffsetWithin(range, el);
+      // var caretOffset = this. this.getCaretPosition();
+      var textBefore = elTxt.substring(0,  caretOffset);
+      var textAfter  = elTxt.substring(caretOffset, elTxt.length);
+      console.log("textBefore: "+ textBefore);
+      console.log(textAfter);
+      var lastChar = textBefore.substr(textBefore.length - 1);
+      console.log("lastChar: "+ lastChar);
+     // caretPosEl.innerHTML = "Caret position: " + caretOffset;
+     // console.log(caretPosEl);
+     
+     
+     return lastChar;
+  }
+  getCharacterOffsetWithin(range, node) {
+      var treeWalker = document.createTreeWalker(
+          node,
+          NodeFilter.SHOW_TEXT,
+          function(node) {
+              var nodeRange = document.createRange();
+              nodeRange.selectNodeContents(node);
+              return nodeRange.compareBoundaryPoints(Range.END_TO_END, range) < 1 ?
+                  NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+          },
+          false
+      );
+  
+      var charCount = 0;
+      while (treeWalker.nextNode()) {
+          charCount += treeWalker.currentNode.length;
+      }
+      if (range.startContainer.nodeType == 3) {
+          charCount += range.startOffset;
+      }
+      return charCount;
+  }
+    getCaretCharacterOffsetWithin(element) {
+      var caretOffset = 0;
+      var doc = element.ownerDocument || element.document;
+      var win = doc.defaultView || doc.parentWindow;
+      var sel;
+      if (typeof win.getSelection != "undefined") {
+          sel = win.getSelection();
+          if (sel.rangeCount > 0) {
+              var range = win.getSelection().getRangeAt(0);
+              var preCaretRange = range.cloneRange();
+              preCaretRange.selectNodeContents(element);
+              preCaretRange.setEnd(range.endContainer, range.endOffset);
+              caretOffset = preCaretRange.toString().length;
+          }
+      } else if ( (sel = doc.selection) && sel.type != "Control") {
+          var textRange = sel.createRange();
+          var preCaretTextRange = doc.body.createTextRange();
+          preCaretTextRange.moveToElementText(element);
+          preCaretTextRange.setEndPoint("EndToEnd", textRange);
+          caretOffset = preCaretTextRange.text.length;
+      }
+    //  console.log(caretOffset);
+    this.savedCaretPosition = caretOffset;
+      return caretOffset;
+    }*/
     Story1Component.prototype.onPageClick = function (e) {
         e.preventDefault();
         //console.log(e.currentTarget);
@@ -3918,10 +3928,7 @@ var Story1Component = (function () {
         // console.log(this.selectedKeyword);
         setTimeout(function (that) {
             var cords = that.savedCords;
-            // that.selectedKeyword = Object.create(keywordObj);
             $('.autotext').hide();
-            that.keywordShow = false;
-            //     console.log(that.selectedKeyword);
             var postCss = that.getAutoListPos();
             $('.list2').css('left', 'auto').css('right', 'auto');
             $('.list2').css('top', cords.y + 18).css(postCss.pos, postCss.x).show();
@@ -3951,10 +3958,8 @@ var Story1Component = (function () {
         var target = e.target || e.srcElement || e.currentTarget;
         var currEl = '<span contenteditable="false" style="color:' + this.selectedCategory.color + '">' + pastekeyword + '</span>';
         currEl = currEl + "&nbsp;";
+        // currEl = "&nbsp;" + currEl + "&nbsp;";
         this.pasteKeywordHtml(currEl);
-    };
-    Story1Component.prototype.getKeyCode = function (str) {
-        return str.charCodeAt(str.length);
     };
     Story1Component.prototype.onClick = function (e) {
         e.preventDefault();
@@ -4004,6 +4009,26 @@ var Story1Component = (function () {
         }
         return posCss;
     };
+    Story1Component.prototype.getCharacterPrecedingCaret = function (containerEl) {
+        var precedingChar = "", sel, range, precedingRange;
+        if (window.getSelection) {
+            sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                range = sel.getRangeAt(0).cloneRange();
+                range.collapse(true);
+                range.setStart(containerEl, 0);
+                precedingChar = range.toString().slice(-1);
+            }
+        }
+        else if ((sel = document['selection']) && sel.type != "Control") {
+            range = sel.createRange();
+            precedingRange = range.duplicate();
+            precedingRange.moveToElementText(containerEl);
+            precedingRange.setEndPoint("EndToStart", range);
+            precedingChar = precedingRange.text.slice(-1);
+        }
+        return precedingChar;
+    };
     Story1Component.prototype.pasteKeywordHtml = function (keyhtml) {
         var editor = document.getElementById("description");
         var range = this.saveRange;
@@ -4031,6 +4056,7 @@ var Story1Component = (function () {
         $('.list2').hide();
         this.keywordShow = false;
         this.keywordCatShow = false;
+        editor.normalize();
         return false;
     };
     Story1Component.prototype.getSelectionCoords = function () {
@@ -4098,6 +4124,56 @@ var Story1Component = (function () {
             range.select();
         }
     };
+    /*
+    getWordPrecedingCaret(containerEl) {
+      var preceding = "",
+          sel,
+          range,
+          precedingRange;
+      if (window.getSelection) {
+          sel = window.getSelection();
+          if (sel.rangeCount > 0) {
+              range = sel.getRangeAt(0).cloneRange();
+              range.collapse(true);
+              range.setStart(containerEl, 0);
+              preceding = range.toString();
+          }
+      } else if ((sel = document['selection']) && sel.type != "Control") {
+          range = sel.createRange();
+          precedingRange = range.duplicate();
+          precedingRange.moveToElementText(containerEl);
+          precedingRange.setEndPoint("EndToStart", range);
+          preceding = precedingRange.text;
+      }
+    
+      var words = range.toString().trim().split(' '),
+          lastWord = words[words.length - 1];
+          
+      if (lastWord) {
+          var resultValue = ''; // this value is coming from some other function
+          if (resultValue == lastWord) {
+              console.log('do nothing: ' + lastWord);
+              // do nothing
+          } else {
+              console.log('replace word ' + lastWord);
+              
+              // Find word start and end
+              var wordStart = range.toString().lastIndexOf(lastWord);
+              var wordEnd = wordStart + lastWord.length;
+              console.log("pos: (" + wordStart + ", " + wordEnd + ")");
+                             
+              range.setStart(containerEl.firstChild, wordStart);
+              range.setEnd(containerEl.firstChild, wordEnd);
+              range.deleteContents();
+              range.insertNode(document.createTextNode(resultValue));
+              // delete That specific word and replace if with resultValue
+    
+              // Merge multiple text nodes
+              containerEl.normalize();
+          }
+          return lastWord;
+      }
+    }*/
     Story1Component.prototype.onSubmit = function () {
     };
     Story1Component.prototype.onKeytitre = function (e) {
