@@ -3633,7 +3633,7 @@ var SlasherDataService = (function () {
 /***/ "../../../../../src/app/story/1/1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"textcount\">PUBLIER</button>\t\n\n\t</div>\n\t\n\t\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n        \n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n        \n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\" \n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\" \n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput data-placeholder=\"Ma biographie\" \n                (click)=\"onClick($event)\" (keyup)=\"onKeyUp($event)\" (keydown)=\"onKeyDown($event)\" style=\"float: left;min-height:55px !important;max-height: 55px !important;overflow-y: scroll;\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n              \n\t </form>\n\t\t\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>                   \n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\t\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" (click)=\"selectKeywordCat($event, keycat)\">\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>  \n    <!--ul id=\"autotextlist2\">\n        <li *ngFor=\"let keycat of selectedKeywordCategories\" (click)=\"selectKeywordCat($event, keycat)\">\n            <span [style.color]=keycat.color>{{keycat.category}}</span>\n       </li>\n    </ul-->\n</div>\n\t\t\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\t\t\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\" \n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\" \n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\t\n\t \n\t \n\t   \n\t </form-->\n\t\n\t\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\t\t\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\t\t\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"!socialshow\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\t\n  <mat-chip-list [hidden]=\"!socialshow\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">             \n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}} \n\t\t\t</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip> \n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>           \n\t        </div>\n\t    </div>\n\t</div> \n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\t\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\t\t\t\t\t\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\" \n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\t\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\t\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\t\t\n\t\t\n\t\t\n\t  </ul>\n\t\t\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\t\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  \n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\t\t  \t\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
+module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"textcount\">PUBLIER</button>\t\n\n\t</div>\n\t\n\t\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n        \n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n        \n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\" \n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n\t\t\t\t<br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\" \n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput data-placeholder=\"Ma biographie\" \n                (click)=\"onClick($event)\" (keyup)=\"onKeyUp($event)\" (keydown)=\"onKeyDown($event)\" style=\"float: left;min-height:55px !important;max-height: 55px !important;overflow-y: scroll;\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n              \n\t </form>\n\t\t\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>                   \n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\t\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" (click)=\"selectKeywordCat($event, keycat)\">\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>  \n    <!--ul id=\"autotextlist2\">\n        <li *ngFor=\"let keycat of selectedKeywordCategories\" (click)=\"selectKeywordCat($event, keycat)\">\n            <span [style.color]=keycat.color>{{keycat.category}}</span>\n       </li>\n    </ul-->\n</div>\n\t\t\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\t\t\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\" \n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\" \n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\t\n\t \n\t \n\t   \n\t </form-->\n\t\n\t\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\t\t\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\t\t\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"!socialshow\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\t\n  <mat-chip-list [hidden]=\"!socialshow\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">             \n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}} \n\t\t\t</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip> \n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>           \n\t        </div>\n\t    </div>\n\t</div> \n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\t\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\t\t\t\t\t\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\" \n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\t\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\t\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\t\t\n\t\t\n\t\t\n\t  </ul>\n\t\t\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\t\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  \n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\t\t  \t\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
 
 /***/ }),
 
@@ -3685,6 +3685,7 @@ var Story1Component = (function () {
         this.keywordCatShow = false;
         this.autosearch = false;
         this.autosearchtext = '';
+        this.keyHash = false;
         //  keysMenu: any = ['ArrowLeft'];
         this.testForm = { 'firstname': '', 'address': '' };
     }
@@ -3760,51 +3761,68 @@ var Story1Component = (function () {
         var that = this;
         $(document).ready(function () {
             $("#description").on('keydown', function (e) {
+                /*
+                that.getSelectionCoords();
+                      var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                      
+                      that.pasteKeywordHtml(tempEl);
+                      var contentEditable = document.getElementById('description');
+            var lastItem = document.getElementById('keym');
+                      contentEditable.focus();
+                        that.selectElementText(lastItem, window);
+                //that.showCaretPos();
+                
                 if (e.key == "#") {
-                    //  alert("on key down: "+ e.key);
-                    that.getSelectionCoords();
-                    var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                  //  alert("on key down: "+ e.key);
+                     that.getSelectionCoords();
+                      var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                      
+                      that.pasteKeywordHtml(tempEl);
+                      var contentEditable = document.getElementById('description');
+            var lastItem = document.getElementById('keym');
+                      contentEditable.focus();
+                        that.selectElementText(lastItem, window);
+                  }*/
+            });
+            $("#description").on('keyup', function (e) {
+                // console.log(e);
+                var inputChar = that.showCaretPos();
+                console.log("inputChar: " + inputChar);
+                if (!inputChar) {
+                    inputChar = e.key;
+                }
+                if (inputChar == '#') {
+                    that.autosearch = true;
+                    var cords = that.getSelectionCoords();
+                    var tempEl = "<span id='keym' class='keymarker'>" + inputChar + "</span>";
                     that.pasteKeywordHtml(tempEl);
+                    that.savedCords = cords;
                     var contentEditable = document.getElementById('description');
                     var lastItem = document.getElementById('keym');
                     contentEditable.focus();
                     that.selectElementText(lastItem, window);
                 }
-            });
-            $("#description").on('keyup', function (e) {
-                console.log(e);
-                if (e.key == "#") {
-                    //alert("on key up: "+ e.key);
-                    that.autosearch = true;
-                    var cords = that.getSelectionCoords();
-                    //var tempEl = "<span class='keymarker'>&nbsp;</span>";
-                    //  that.pasteKeywordHtml(tempEl);
-                    that.savedCords = cords;
-                }
-                else if (e.key == " ") {
-                    //alert("on key up: "+ e.key);
+                else if (inputChar == " ") {
                     that.autosearch = false;
                     that.autosearchtext = '';
                     $('.autotext').hide();
                     that.keywordShow = false;
                 }
                 if (!that.autosearch) {
-                    if (e.key.length === 1 && (e.key != '#')) {
-                        if (that.checkStr(e.key)) {
-                            that.autosearchtext = that.autosearchtext + e.key;
+                    if (inputChar.length === 1 && (inputChar != '#')) {
+                        if (that.checkStr(inputChar)) {
+                            that.autosearchtext = that.autosearchtext + inputChar;
                         }
                     }
                 }
-                console.log("autosearchtext: " + that.autosearchtext);
+                // console.log("autosearchtext: "+ that.autosearchtext);
                 if (that.autosearch) {
-                    console.log($("#keymarker").text());
                     var inputKeyword = $(".keymarker").text();
-                    var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
-                    console.log(searchKeyword);
+                    var searchKeyword = inputKeyword; // inputKeyword.substring(1, inputKeyword.length);
                     if (searchKeyword == "") {
                         $('.autotext').hide();
                         $('.list2').hide();
-                        $(".keymarker").remove();
+                        //   $(".keymarker").remove();
                     }
                     else {
                         that.updateKeywordListByStr(searchKeyword);
@@ -3815,6 +3833,72 @@ var Story1Component = (function () {
                 }
             });
         });
+    };
+    Story1Component.prototype.inputMarker = function (inputChar) {
+        //if (inputChar == '#') {
+        this.autosearch = true;
+        var cords = this.getSelectionCoords();
+        this.savedCords = cords;
+        /*
+              //alert("on key up: "+ e.key);
+              if (this.keyHash) {
+                this.autosearch = true;
+                var cords = this.getSelectionCoords();
+                this.savedCords = cords;
+              } else {
+                this.keyHash = true;
+                this.getSelectionCoords();
+                var tempEl = "<span id='keym' class='keymarker'>#</span>";
+                  this.pasteKeywordHtml(tempEl);
+                //var contentEditable = document.getElementById('description');
+                //var lastItem = document.getElementById('keym');
+               //     contentEditable.focus();
+                 //     this.selectElementText(lastItem, window);
+                      this.inputMarker(inputChar);
+              }
+              */
+        //  } 
+    };
+    Story1Component.prototype.showCaretPos = function () {
+        var el = document.getElementById("description");
+        var elTxt = el.innerText;
+        // var elTxt = el.innerHTML;
+        // var caretPosEl = document.getElementById("caretPos");
+        var caretOffset = this.getCaretCharacterOffsetWithin(el);
+        var textBefore = elTxt.substring(0, caretOffset);
+        var textAfter = elTxt.substring(caretOffset, elTxt.length);
+        console.log(textBefore);
+        console.log(textAfter);
+        var lastChar = textBefore.substr(textBefore.length - 1);
+        console.log("lastChar: " + lastChar);
+        // caretPosEl.innerHTML = "Caret position: " + caretOffset;
+        // console.log(caretPosEl);
+        return lastChar;
+    };
+    Story1Component.prototype.getCaretCharacterOffsetWithin = function (element) {
+        var caretOffset = 0;
+        var doc = element.ownerDocument || element.document;
+        var win = doc.defaultView || doc.parentWindow;
+        var sel;
+        if (typeof win.getSelection != "undefined") {
+            sel = win.getSelection();
+            if (sel.rangeCount > 0) {
+                var range = win.getSelection().getRangeAt(0);
+                var preCaretRange = range.cloneRange();
+                preCaretRange.selectNodeContents(element);
+                preCaretRange.setEnd(range.endContainer, range.endOffset);
+                caretOffset = preCaretRange.toString().length;
+            }
+        }
+        else if ((sel = doc.selection) && sel.type != "Control") {
+            var textRange = sel.createRange();
+            var preCaretTextRange = doc.body.createTextRange();
+            preCaretTextRange.moveToElementText(element);
+            preCaretTextRange.setEndPoint("EndToEnd", textRange);
+            caretOffset = preCaretTextRange.text.length;
+        }
+        //  console.log(caretOffset);
+        return caretOffset;
     };
     Story1Component.prototype.onPageClick = function (e) {
         e.preventDefault();
@@ -3881,65 +3965,9 @@ var Story1Component = (function () {
         }
     };
     Story1Component.prototype.onKeyDown = function (e) {
-        // console.log("on key down: "+ e.key);
-        /*
-          if (e.key == "#") {
-          //  alert("on key down: "+ e.key);
-             this.getSelectionCoords();
-              var tempEl = "<span class='keymarker'>&nbsp;</span>";
-              this.pasteKeywordHtml(tempEl);
-          }*/
     };
     Story1Component.prototype.onKeyUp = function (e) {
-        /*
-        console.log("on key up: "+ e.key);
-        
-        if (e.key == "#") {
-          //alert("on key up: "+ e.key);
-          this.autosearch = true;
-          var cords = this.getSelectionCoords();
-          var tempEl = "<span class='keymarker'>&nbsp;</span>";
-              this.pasteKeywordHtml(tempEl);
-          this.savedCords = cords;
-        } else if (e.key == " ") {
-          //alert("on key up: "+ e.key);
-          this.autosearch = false;
-          this.autosearchtext = '';
-          $('.autotext').hide();
-          this.keywordShow = false;
-        }
-        if (this.autosearch) {
-          
-          if (e.key.length == '1' && (e.key != '#')) {
-            if (this.checkStr(e.key)) {
-              this.autosearchtext = this.autosearchtext + e.key;
-    
-            }
-    
-          }
-         //console.log($("#keymarker").text());
-         var inputKeyword = $(".keymarker").text();
-         var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
-         //console.log(searchKeyword);
-         if (searchKeyword == "") {
-            $('.autotext').hide();
-            $('.list2').hide();
-            $(".keymarker").remove();
-         } else {
-             this.updateKeywordListByStr(searchKeyword);
-             var postCss = this.getAutoListPos();
-             $('.autotext').css('left', 'auto').css('right', 'auto');
-             $('.autotext').css('top', this.savedCords.y+18).css(postCss.pos, postCss.x).show();
-         }
-        }*/
     };
-    /*
-      onBlurDesc(e) {
-        $('.autotext').hide();
-        $('.list2').hide();
-        $("#keymarker").remove();
-      }
-      */
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
         var i;
@@ -3976,46 +4004,6 @@ var Story1Component = (function () {
         }
         return posCss;
     };
-    /*
-    getTextBeforeCaret() {
-        var el = document.getElementById("description");
-        var elTxt = el.innerText;
-        var caretOffset = this.getCaretCharacterOffsetWithin(el);
-        if (!this.caretOffsetStart) {
-            this.caretOffsetStart = caretOffset;
-        }
-        this.caretOffsetEnd = caretOffset;
-          var textBefore = elTxt.substring(0,  caretOffset);
-          var textAfter  = elTxt.substring(caretOffset, elTxt.length);
-          console.log(textBefore);
-          console.log(textAfter);
-          var lastWord = textBefore.substring(textBefore.lastIndexOf(' ') + 1);
-          console.log(lastWord);
-    }
-    getCaretCharacterOffsetWithin(element) {
-      var caretOffset = 0;
-      var doc = element.ownerDocument || element.document;
-      var win = doc.defaultView || doc.parentWindow;
-      var sel;
-      if (typeof win.getSelection != "undefined") {
-          sel = win.getSelection();
-          if (sel.rangeCount > 0) {
-              var range = win.getSelection().getRangeAt(0);
-              var preCaretRange = range.cloneRange();
-              preCaretRange.selectNodeContents(element);
-              preCaretRange.setEnd(range.endContainer, range.endOffset);
-              caretOffset = preCaretRange.toString().length;
-          }
-      } else if ( (sel = doc.selection) && sel.type != "Control") {
-          var textRange = sel.createRange();
-          var preCaretTextRange = doc.body.createTextRange();
-          preCaretTextRange.moveToElementText(element);
-          preCaretTextRange.setEndPoint("EndToEnd", textRange);
-          caretOffset = preCaretTextRange.text.length;
-      }
-      console.log(caretOffset);
-      return caretOffset;
-  } */
     Story1Component.prototype.pasteKeywordHtml = function (keyhtml) {
         var editor = document.getElementById("description");
         var range = this.saveRange;
