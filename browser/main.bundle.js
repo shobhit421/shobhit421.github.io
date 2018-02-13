@@ -3797,7 +3797,6 @@ var Story1Component = (function () {
             });
             $("#description").on('keyup', function (e) {
                 that.enableAutoSearch(e);
-                console.log("autosearch: " + that.autosearch);
                 if (that.autosearch) {
                     var inputKeyword = $(".keymarker").text();
                     var searchKeyword = inputKeyword;
