@@ -3762,7 +3762,6 @@ var Story1Component = (function () {
         $(document).ready(function () {
             $("#description").on('keydown', function (e) {
                 if (!/(android)/i.test(navigator.userAgent)) {
-                    console.log('here');
                     if (e.key == "#") {
                         that.getSelectionCoords();
                         var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
@@ -3843,7 +3842,7 @@ var Story1Component = (function () {
                 this.insertMarkerForAndroid(inputChar);
             }
         }
-        else if (inputChar == " " && this.autosearch) {
+        else if ((inputChar.trim().length == 0) && this.autosearch) {
             this.autosearch = false;
             $('.autotext').hide();
             this.keywordShow = false;
@@ -3870,7 +3869,6 @@ var Story1Component = (function () {
         var sel = window.getSelection();
         var i, matchNode;
         matchNode = document.getElementById("keym");
-        console.log(matchNode);
         range.setStart(matchNode, 1);
         range.collapse(true);
         sel.removeAllRanges();
@@ -3891,10 +3889,7 @@ var Story1Component = (function () {
       // var caretOffset = this. this.getCaretPosition();
       var textBefore = elTxt.substring(0,  caretOffset);
       var textAfter  = elTxt.substring(caretOffset, elTxt.length);
-      console.log("textBefore: "+ textBefore);
-      console.log(textAfter);
       var lastChar = textBefore.substr(textBefore.length - 1);
-      console.log("lastChar: "+ lastChar);
      // caretPosEl.innerHTML = "Caret position: " + caretOffset;
      // console.log(caretPosEl);
      
@@ -3998,6 +3993,7 @@ var Story1Component = (function () {
         currEl = currEl + "&nbsp;";
         // currEl = "&nbsp;" + currEl + "&nbsp;";
         this.pasteKeywordHtml(currEl);
+        this.autosearch = false;
     };
     Story1Component.prototype.onClick = function (e) {
         e.preventDefault();
@@ -4014,6 +4010,7 @@ var Story1Component = (function () {
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
         var i;
+        inputStr = inputStr.trim();
         var re = new RegExp(inputStr, 'g');
         for (i = 0; i < this.desckeywords.length; i++) {
             var currKeyword = this.desckeywords[i].name;
@@ -4022,7 +4019,6 @@ var Story1Component = (function () {
                 this.matchKeywords.push(this.desckeywords[i]);
             }
         }
-        //console.log(this.matchKeywords);
     };
     Story1Component.prototype.checkStr = function (inputtxt) {
         var letters = /^[0-9a-zA-Z]+$/;
@@ -4092,7 +4088,6 @@ var Story1Component = (function () {
         }
         $('.autotext').hide();
         $('.list2').hide();
-        this.autosearch = false;
         this.keywordShow = false;
         this.keywordCatShow = false;
         editor.normalize();
