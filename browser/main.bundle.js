@@ -3761,6 +3761,18 @@ var Story1Component = (function () {
         var that = this;
         $(document).ready(function () {
             $("#description").on('keydown', function (e) {
+                if (!/(android)/i.test(navigator.userAgent)) {
+                    console.log('here');
+                    if (e.key == "#") {
+                        that.getSelectionCoords();
+                        var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                        that.pasteKeywordHtml(tempEl);
+                        var contentEditable = document.getElementById('description');
+                        var lastItem = document.getElementById('keym');
+                        contentEditable.focus();
+                        that.selectElementText(lastItem, window);
+                    }
+                }
                 /*
                 that.getSelectionCoords();
                       var tempEl = "<span id='keym' class='keymarker'>&#x200b;</span>";
@@ -3785,61 +3797,87 @@ var Story1Component = (function () {
                   }*/
             });
             $("#description").on('keyup', function (e) {
-                var el = document.getElementById("description");
-                var inputChar = that.getCharacterPrecedingCaret(el); // that.showCaretPos();
-                console.log(inputChar);
-                if (!inputChar) {
-                    inputChar = e.key;
-                }
-                if (inputChar == '#') {
-                    // var contentEditable = document.getElementById('description');
-                    var contentEl = document.getElementById('description');
-                    that.autosearch = true;
-                    var cords = that.getSelectionCoords();
-                    var tempEl = "<span id='keym' class='keymarker'>" + inputChar + "</span>";
-                    that.pasteKeywordHtml(tempEl);
-                    that.savedCords = cords;
-                    var markerNode = document.getElementById('keym');
-                    contentEl.focus();
-                    that.selectElementText(markerNode, window);
-                    var htmlData = contentEl.innerHTML;
-                    htmlData = htmlData.replace(/#<span/gi, "<span");
-                    contentEl.innerHTML = htmlData;
-                    var range = document.createRange();
-                    var sel = window.getSelection();
-                    var i, matchNode;
-                    matchNode = document.getElementById("keym");
-                    console.log(matchNode);
-                    range.setStart(matchNode, 1);
-                    range.collapse(true);
-                    sel.removeAllRanges();
-                    sel.addRange(range);
-                    // contentEl.focus();
-                    var cords = that.getSelectionCoords();
-                    that.savedCords = cords;
-                }
-                else if (inputChar == " ") {
-                    that.autosearch = false;
-                    $('.autotext').hide();
-                    that.keywordShow = false;
-                }
+                that.enableAutoSearch(e);
+                console.log("autosearch: " + that.autosearch);
                 if (that.autosearch) {
                     var inputKeyword = $(".keymarker").text();
-                    var searchKeyword = inputKeyword; // inputKeyword.substring(1, inputKeyword.length);
+                    var searchKeyword = inputKeyword;
+                    if (!/(android)/i.test(navigator.userAgent)) {
+                        searchKeyword = inputKeyword.substring(1, inputKeyword.length);
+                    }
                     if (searchKeyword == "") {
                         $('.autotext').hide();
                         $('.list2').hide();
                         //   $(".keymarker").remove();
                     }
                     else {
+                        $('.autotext').css('left', 'auto').css('right', 'auto').hide();
                         that.updateKeywordListByStr(searchKeyword);
-                        var postCss = that.getAutoListPos();
-                        $('.autotext').css('left', 'auto').css('right', 'auto');
-                        $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
+                        if (that.matchKeywords && that.matchKeywords.length) {
+                            var postCss = that.getAutoListPos();
+                            $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
+                        }
                     }
                 }
             });
         });
+    };
+    Story1Component.prototype.isAndroid = function () {
+        // var ua = navigator.userAgent.toLowerCase();
+        return /(android)/i.test(navigator.userAgent); //(ua.indexOf("android") > -1);
+    };
+    Story1Component.prototype.enableAutoSearch = function (e) {
+        var el = document.getElementById("description");
+        var inputChar;
+        if (/(android)/i.test(navigator.userAgent)) {
+            inputChar = this.getCharacterPrecedingCaret(el);
+        }
+        else {
+            inputChar = e.key;
+        }
+        if (inputChar == '#') {
+            this.autosearch = true;
+            var cords = this.getSelectionCoords();
+            this.savedCords = cords;
+            if (/(android)/i.test(navigator.userAgent)) {
+                this.insertMarkerForAndroid(inputChar);
+            }
+        }
+        else if (inputChar == " " && this.autosearch) {
+            this.autosearch = false;
+            $('.autotext').hide();
+            this.keywordShow = false;
+            this.removeTextMarker();
+        }
+    };
+    Story1Component.prototype.removeTextMarker = function () {
+        if ($(".keymarker") && $(".keymarker").length) {
+            var inputKeyword = $(".keymarker").text();
+            this.pasteKeywordHtml(inputKeyword);
+        }
+    };
+    Story1Component.prototype.insertMarkerForAndroid = function (inputChar) {
+        var contentEl = document.getElementById('description');
+        var tempEl = "<span id='keym' class='keymarker'>" + inputChar + "</span>";
+        this.pasteKeywordHtml(tempEl);
+        var markerNode = document.getElementById('keym');
+        contentEl.focus();
+        this.selectElementText(markerNode, window);
+        var htmlData = contentEl.innerHTML;
+        htmlData = htmlData.replace(/#<span/gi, "<span");
+        contentEl.innerHTML = htmlData;
+        var range = document.createRange();
+        var sel = window.getSelection();
+        var i, matchNode;
+        matchNode = document.getElementById("keym");
+        console.log(matchNode);
+        range.setStart(matchNode, 1);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        // contentEl.focus();
+        var cords = this.getSelectionCoords();
+        this.savedCords = cords;
     };
     /*
     showCaretPos() {
@@ -4054,6 +4092,7 @@ var Story1Component = (function () {
         }
         $('.autotext').hide();
         $('.list2').hide();
+        this.autosearch = false;
         this.keywordShow = false;
         this.keywordCatShow = false;
         editor.normalize();
