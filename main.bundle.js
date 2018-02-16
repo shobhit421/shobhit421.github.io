@@ -3633,7 +3633,7 @@ var SlasherDataService = (function () {
 /***/ "../../../../../src/app/story/1/1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick(e);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"textcount\">PUBLIER</button>\t\n\n\t</div>\n\t\n\t\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n        \n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n        \n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\" \n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\" \n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput data-placeholder=\"Ma biographie\" \n                (click)=\"onClick($event)\" (keyup)=\"onKeyUp($event)\" (keydown)=\"onKeyDown($event)\" style=\"float: left;min-height:55px !important;max-height: 55px !important;overflow-y: scroll;\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n              \n\t </form>\n\t\t\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>                   \n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\t\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" (click)=\"selectKeywordCat($event, keycat)\">\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>  \n    <!--ul id=\"autotextlist2\">\n        <li *ngFor=\"let keycat of selectedKeywordCategories\" (click)=\"selectKeywordCat($event, keycat)\">\n            <span [style.color]=keycat.color>{{keycat.category}}</span>\n       </li>\n    </ul-->\n</div>\n\t\t\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\t\t\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\" \n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\" \n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\t\n\t \n\t \n\t   \n\t </form-->\n\t\n\t\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\t\t\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\t\t\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"!socialshow\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\t\n  <mat-chip-list [hidden]=\"!socialshow\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">             \n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}} \n\t\t\t</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip> \n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>           \n\t        </div>\n\t    </div>\n\t</div> \n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\t\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\t\t\t\t\t\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\" \n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\t\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\t\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\t\t\n\t\t\n\t\t\n\t  </ul>\n\t\t\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\t\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  \n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\t\t  \t\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
+module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"disablePublish\">PUBLIER</button>\t\n\n\t</div>\n\t\n\t\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n        \n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n        \n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\" \n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n\t\t\t\t<br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\" \n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput placeholder=\"Ma biographie\" \n                (click)=\"onClick($event)\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n              \n\t </form>\n\t\t\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>                   \n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\t\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" class=\"autotext_li\" (click)=\"selectKeywordCat($event, keycat)\">\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>  \n    \n</div>\n\t\t\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\t\t\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\" \n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\" \n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\t\n\t \n\t \n\t   \n\t </form-->\n\t\n\t\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\t\t\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\t\t\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"true\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\t\n  <mat-chip-list [hidden]=\"true\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">             \n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}} \n\t\t\t</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip> \n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>           \n\t        </div>\n\t    </div>\n\t</div> \n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\t\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\t\t\t\t\t\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\" \n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\t\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\t\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\t\t\n\t\t\n\t\t\n\t  </ul>\n\t\t\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\t\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  \n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\t\t  \t\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
 
 /***/ }),
 
@@ -3645,7 +3645,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contenteditable=true]:empty:before {\n  content: attr(placeholder);\n  display: block;\n  /* For Firefox */ }\n\n#description {\n  border-bottom: 1px solid grey; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.autolist {\n  position: absolute;\n  width: auto;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999; }\n\nul {\n  list-style-type: none; }\n\nul li {\n  display: block; }\n\n.autotext .key-name {\n  padding-right: 150px; }\n\n.list2 ul {\n  border-bottom: 1px solid black !important;\n  padding: 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-top: 25px;\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 34px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  position: fixed;\n  top: 94px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\n#description {\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px; }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 137px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 236px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 315px; }\n\n.social2 {\n  position: fixed;\n  top: 376px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 434px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 329px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 389px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 445px; }\n\n#clear:hover {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contentEditable=true]:empty:before {\n  content: attr(placeholder);\n  color: grey; }\n\n[contentEditable=true]:empty:focus:before {\n  content: \"\"; }\n\n#description {\n  float: left;\n  min-height: 90px !important;\n  max-height: 90px !important;\n  outline: none;\n  padding-top: 10px;\n  border-bottom: 1px solid grey;\n  display: block;\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.autolist {\n  position: absolute;\n  width: auto;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999; }\n\n.autolist .autotext_li {\n  width: 328px;\n  height: 56px; }\n\nul {\n  list-style-type: none; }\n\nul li {\n  display: block; }\n\n.autotext .key-name {\n  padding-right: 150px; }\n\n.list2 ul {\n  border-bottom: 1px solid black !important;\n  padding: 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-top: 25px;\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 34px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  position: fixed;\n  top: 94px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 137px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none;\n  position: absolute;\n  top: 20vh;\n  right: 2vw; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 280px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px;\n  position: absolute;\n  right: 4vw; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 355px; }\n\n.social2 {\n  position: fixed;\n  top: 416px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 474px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 369px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 429px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 485px; }\n\n#clear:hover {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -3674,6 +3674,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// shobhit421.github.io : shobhit421: y114dff3
 
 var Story1Component = (function () {
     function Story1Component(slasherDataService) {
@@ -3684,6 +3685,8 @@ var Story1Component = (function () {
         this.keywordCatShow = false;
         this.autosearch = false;
         this.autosearchtext = '';
+        this.keyHash = false;
+        this.disablePublish = true;
         //  keysMenu: any = ['ArrowLeft'];
         this.testForm = { 'firstname': '', 'address': '' };
     }
@@ -3698,30 +3701,6 @@ var Story1Component = (function () {
             { 'category': 'Centre d’interêts', 'color': '#006c95' },
             { 'category': 'Super pouvoir', 'color': '#df3275' },
             { 'category': 'Motivation', 'color': '#2c9cc7' }];
-        this.keywordCategories = [{
-                'musique': [{ 'category': 'Compétence', 'color': 'grey' },
-                    { 'category': 'Centre d’interêts', 'color': 'grey' },
-                    { 'category': 'Super pouvoir', 'color': 'grey' },
-                    { 'category': 'Motivation', 'color': 'grey' }]
-            },
-            {
-                'music': [{ 'category': 'Compétence', 'color': 'grey' },
-                    { 'category': 'Centre d’interêts', 'color': 'grey' },
-                    { 'category': 'Super pouvoir', 'color': 'grey' },
-                    { 'category': 'Motivation', 'color': 'grey' }]
-            },
-            {
-                'musicien': [{ 'category': 'Compétence', 'color': 'grey' },
-                    { 'category': 'Centre d’interêts', 'color': 'grey' },
-                    { 'category': 'Super pouvoir', 'color': 'grey' },
-                    { 'category': 'Motivation', 'color': 'grey' }]
-            },
-            {
-                'MusiqueClassique': [{ 'category': 'Compétence', 'color': 'grey' },
-                    { 'category': 'Centre d’interêts', 'color': 'grey' },
-                    { 'category': 'Super pouvoir', 'color': 'grey' },
-                    { 'category': 'Motivation', 'color': 'grey' }]
-            }];
         this.selectedKeyword = {};
         //this.str = "Let's make a fresh start";
         this.slasherDataService.slasherData$.subscribe(function (data) {
@@ -3740,6 +3719,7 @@ var Story1Component = (function () {
         });
         this.titre_counter = 0;
         this.textcount = true;
+        this.disablePublish = true;
         this.resultshow = true;
         this.resultshow2 = true;
         this.card = true;
@@ -3753,29 +3733,208 @@ var Story1Component = (function () {
             titre: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */](),
             description: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]()
         });
+        this.handleKeyEvents();
     };
-    Story1Component.prototype.onPageClick = function () {
-        event.preventDefault();
-        console.log(event.currentTarget);
-        if (event && event.target) {
-            if (event.target['id'] && event.target['id'] !== 'description') {
+    Story1Component.prototype.clearPlaceHolder = function () {
+        if (!$("#description").text().trim().length) {
+            $("#description").empty();
+        }
+    };
+    Story1Component.prototype.handleKeyEvents = function () {
+        var that = this;
+        $(document).ready(function () {
+            that.clearPlaceHolder();
+            $("[contenteditable]").focusout(function () {
+                var element = $(this);
+                if (!element.text().trim().length) {
+                    element.empty();
+                }
+            });
+            $("#description").on('keydown', function (e) {
+                if (!/(android)/i.test(navigator.userAgent)) {
+                    if (e.key == "#") {
+                        that.getSelectionCoords();
+                        var tempEl = "<span id='keym' class='keymarker'>&nbsp;</span>";
+                        that.pasteKeywordHtml(tempEl);
+                        var contentEditable = document.getElementById('description');
+                        var lastItem = document.getElementById('keym');
+                        contentEditable.focus();
+                        that.selectElementText(lastItem, window);
+                    }
+                }
+            });
+            $("#description").on('keyup', function (e) {
+                var fieldData = $(this).text();
+                if (fieldData && fieldData.trim().length > 0) {
+                    that.disablePublish = false;
+                }
+                else {
+                    that.disablePublish = true;
+                }
+                that.enableAutoSearch(e);
+                if (that.autosearch) {
+                    var inputKeyword = $(".keymarker").text();
+                    var searchKeyword = inputKeyword;
+                    if (!/(android)/i.test(navigator.userAgent)) {
+                        searchKeyword = inputKeyword.substring(1, inputKeyword.length);
+                    }
+                    if (searchKeyword == "") {
+                        $('.autotext').hide();
+                        $('.list2').hide();
+                        //   $(".keymarker").remove();
+                    }
+                    else {
+                        $('.autotext').css('left', 'auto').css('right', 'auto').hide();
+                        that.updateKeywordListByStr(searchKeyword);
+                        if (that.matchKeywords && that.matchKeywords.length) {
+                            var postCss = that.getAutoListPos();
+                            $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
+                        }
+                    }
+                }
+            });
+        });
+    };
+    Story1Component.prototype.isAndroid = function () {
+        // var ua = navigator.userAgent.toLowerCase();
+        return /(android)/i.test(navigator.userAgent); //(ua.indexOf("android") > -1);
+    };
+    Story1Component.prototype.enableAutoSearch = function (e) {
+        var el = document.getElementById("description");
+        var inputChar;
+        if (/(android)/i.test(navigator.userAgent)) {
+            inputChar = this.getCharacterPrecedingCaret(el);
+        }
+        else {
+            inputChar = e.key;
+        }
+        if (inputChar == '#') {
+            this.autosearch = true;
+            var cords = this.getSelectionCoords();
+            this.savedCords = cords;
+            if (/(android)/i.test(navigator.userAgent)) {
+                this.insertMarkerForAndroid(inputChar);
+            }
+        }
+        else if ((inputChar.trim().length == 0) && this.autosearch) {
+            this.autosearch = false;
+            $('.autotext').hide();
+            this.keywordShow = false;
+            this.removeTextMarker();
+        }
+    };
+    Story1Component.prototype.removeTextMarker = function () {
+        if ($(".keymarker") && $(".keymarker").length) {
+            var inputKeyword = $(".keymarker").text();
+            this.pasteKeywordHtml(inputKeyword);
+        }
+    };
+    Story1Component.prototype.insertMarkerForAndroid = function (inputChar) {
+        var contentEl = document.getElementById('description');
+        var tempEl = "<span id='keym' class='keymarker'>" + inputChar + "</span>";
+        this.pasteKeywordHtml(tempEl);
+        var markerNode = document.getElementById('keym');
+        contentEl.focus();
+        this.selectElementText(markerNode, window);
+        var htmlData = contentEl.innerHTML;
+        htmlData = htmlData.replace(/#<span/gi, "<span");
+        contentEl.innerHTML = htmlData;
+        var range = document.createRange();
+        var sel = window.getSelection();
+        var i, matchNode;
+        matchNode = document.getElementById("keym");
+        range.setStart(matchNode, 1);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        // contentEl.focus();
+        var cords = this.getSelectionCoords();
+        this.savedCords = cords;
+    };
+    /*
+    showCaretPos() {
+  
+      var el = document.getElementById("description");
+          var range = window.getSelection().getRangeAt(0);
+      var elTxt = el.innerText;
+     
+       var caretOffset = this.getCaretCharacterOffsetWithin(el);
+     // var caretOffset = this.getCharacterOffsetWithin(range, el);
+      // var caretOffset = this. this.getCaretPosition();
+      var textBefore = elTxt.substring(0,  caretOffset);
+      var textAfter  = elTxt.substring(caretOffset, elTxt.length);
+      var lastChar = textBefore.substr(textBefore.length - 1);
+     // caretPosEl.innerHTML = "Caret position: " + caretOffset;
+     // console.log(caretPosEl);
+     
+     
+     return lastChar;
+  }
+  getCharacterOffsetWithin(range, node) {
+      var treeWalker = document.createTreeWalker(
+          node,
+          NodeFilter.SHOW_TEXT,
+          function(node) {
+              var nodeRange = document.createRange();
+              nodeRange.selectNodeContents(node);
+              return nodeRange.compareBoundaryPoints(Range.END_TO_END, range) < 1 ?
+                  NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+          },
+          false
+      );
+  
+      var charCount = 0;
+      while (treeWalker.nextNode()) {
+          charCount += treeWalker.currentNode.length;
+      }
+      if (range.startContainer.nodeType == 3) {
+          charCount += range.startOffset;
+      }
+      return charCount;
+  }
+    getCaretCharacterOffsetWithin(element) {
+      var caretOffset = 0;
+      var doc = element.ownerDocument || element.document;
+      var win = doc.defaultView || doc.parentWindow;
+      var sel;
+      if (typeof win.getSelection != "undefined") {
+          sel = win.getSelection();
+          if (sel.rangeCount > 0) {
+              var range = win.getSelection().getRangeAt(0);
+              var preCaretRange = range.cloneRange();
+              preCaretRange.selectNodeContents(element);
+              preCaretRange.setEnd(range.endContainer, range.endOffset);
+              caretOffset = preCaretRange.toString().length;
+          }
+      } else if ( (sel = doc.selection) && sel.type != "Control") {
+          var textRange = sel.createRange();
+          var preCaretTextRange = doc.body.createTextRange();
+          preCaretTextRange.moveToElementText(element);
+          preCaretTextRange.setEndPoint("EndToEnd", textRange);
+          caretOffset = preCaretTextRange.text.length;
+      }
+    //  console.log(caretOffset);
+    this.savedCaretPosition = caretOffset;
+      return caretOffset;
+    }*/
+    Story1Component.prototype.onPageClick = function (e) {
+        e.preventDefault();
+        //console.log(e.currentTarget);
+        if (e && e.target) {
+            if (e.target['id'] && e.target['id'] !== 'description') {
                 $('.autotext').hide();
                 $('.list2').hide();
-                $("#keymarker").remove();
+                // $("#keymarker").remove();
             }
         }
     };
-    Story1Component.prototype.selectKeyword = function (event, keywordObj) {
-        // console.log(keywordObj);
-        event.preventDefault();
+    Story1Component.prototype.selectKeyword = function (e, keywordObj) {
+        //console.log(keywordObj);
+        e.preventDefault();
         this.selectedKeyword = keywordObj;
-        // console.log(this.selectedKeyword);
         setTimeout(function (that) {
             var cords = that.savedCords;
-            // that.selectedKeyword = Object.create(keywordObj);
             $('.autotext').hide();
-            that.keywordShow = false;
-            //     console.log(that.selectedKeyword);
             var postCss = that.getAutoListPos();
             $('.list2').css('left', 'auto').css('right', 'auto');
             $('.list2').css('top', cords.y + 18).css(postCss.pos, postCss.x).show();
@@ -3794,80 +3953,32 @@ var Story1Component = (function () {
         }
         $('.list2').css('top', cords.y + 18).css('left', cords.x).show();
         this.keywordCatShow = true;
-        //  console.log(selectedKeyword);
         this.selectedKeyword = selectedKeyword;
-        // console.log(this.selectedKeyword);
     };
-    Story1Component.prototype.selectKeywordCat = function (event, keywordCat) {
+    Story1Component.prototype.selectKeywordCat = function (e, keywordCat) {
         this.selectedCategory = keywordCat;
         var pastekeyword = this.selectedKeyword.keyword;
         pastekeyword.substring(1);
-        var target = event.target || event.srcElement || event.currentTarget;
+        var target = e.target || e.srcElement || e.currentTarget;
+        // var currEl = '<span contenteditable="'+!/(android)/i.test(navigator.userAgent)+'" style="color:'+this.selectedCategory.color+'">' + pastekeyword + '</span>';
         var currEl = '<span contenteditable="false" style="color:' + this.selectedCategory.color + '">' + pastekeyword + '</span>';
         currEl = currEl + "&nbsp;";
+        // currEl = "&nbsp;" + currEl + "&nbsp;";
         this.pasteKeywordHtml(currEl);
+        this.autosearch = false;
     };
-    Story1Component.prototype.onClick = function (event) {
-        event.preventDefault();
-        console.log(event.currentTarget);
-        if (event.currentTarget.id === 'description') {
+    Story1Component.prototype.onClick = function (e) {
+        e.preventDefault();
+        if (e.currentTarget.id === 'description') {
             $('.autotext').hide();
             $('.list2').hide();
-            $("#keymarker").remove();
+            // $(".keymarker").remove();
         }
     };
-    Story1Component.prototype.onKeyDown = function (event) {
-        if (event.key == "#") {
-            this.getSelectionCoords();
-            var tempEl = "<span id='keymarker'>&nbsp;</span>";
-            this.pasteKeywordHtml(tempEl);
-        }
-    };
-    Story1Component.prototype.onKeyUp = function (event) {
-        if (event.key == "#") {
-            this.autosearch = true;
-            var cords = this.getSelectionCoords();
-            this.savedCords = cords;
-        }
-        else if (event.key == " ") {
-            this.autosearch = false;
-            this.autosearchtext = '';
-            $('.autotext').hide();
-            this.keywordShow = false;
-        }
-        if (this.autosearch) {
-            if (event.key.length == '1' && (event.key != '#')) {
-                if (this.checkStr(event.key)) {
-                    this.autosearchtext = this.autosearchtext + event.key;
-                }
-            }
-            //console.log($("#keymarker").text());
-            var inputKeyword = $("#keymarker").text();
-            var searchKeyword = inputKeyword.substring(1, inputKeyword.length);
-            //console.log(searchKeyword);
-            if (searchKeyword == "") {
-                $('.autotext').hide();
-                $('.list2').hide();
-                $("#keymarker").remove();
-            }
-            else {
-                this.updateKeywordListByStr(searchKeyword);
-                var postCss = this.getAutoListPos();
-                $('.autotext').css('left', 'auto').css('right', 'auto');
-                $('.autotext').css('top', this.savedCords.y + 18).css(postCss.pos, postCss.x).show();
-            }
-        }
-    };
-    /*
-      onBlurDesc(event) {
-        $('.autotext').hide();
-        $('.list2').hide();
-        $("#keymarker").remove();
-      }
-      */
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
         var i;
+        inputStr = inputStr.trim();
         var re = new RegExp(inputStr, 'g');
         for (i = 0; i < this.desckeywords.length; i++) {
             var currKeyword = this.desckeywords[i].name;
@@ -3876,7 +3987,6 @@ var Story1Component = (function () {
                 this.matchKeywords.push(this.desckeywords[i]);
             }
         }
-        //console.log(this.matchKeywords);
     };
     Story1Component.prototype.checkStr = function (inputtxt) {
         var letters = /^[0-9a-zA-Z]+$/;
@@ -3901,52 +4011,32 @@ var Story1Component = (function () {
         }
         return posCss;
     };
-    /*
-    getTextBeforeCaret() {
-        var el = document.getElementById("description");
-        var elTxt = el.innerText;
-        var caretOffset = this.getCaretCharacterOffsetWithin(el);
-        if (!this.caretOffsetStart) {
-            this.caretOffsetStart = caretOffset;
+    Story1Component.prototype.getCharacterPrecedingCaret = function (containerEl) {
+        var precedingChar = "", sel, range, precedingRange;
+        if (window.getSelection) {
+            sel = window.getSelection();
+            if (sel.rangeCount > 0) {
+                range = sel.getRangeAt(0).cloneRange();
+                range.collapse(true);
+                range.setStart(containerEl, 0);
+                precedingChar = range.toString().slice(-1);
+            }
         }
-        this.caretOffsetEnd = caretOffset;
-          var textBefore = elTxt.substring(0,  caretOffset);
-          var textAfter  = elTxt.substring(caretOffset, elTxt.length);
-          console.log(textBefore);
-          console.log(textAfter);
-          var lastWord = textBefore.substring(textBefore.lastIndexOf(' ') + 1);
-          console.log(lastWord);
-    }
-    getCaretCharacterOffsetWithin(element) {
-      var caretOffset = 0;
-      var doc = element.ownerDocument || element.document;
-      var win = doc.defaultView || doc.parentWindow;
-      var sel;
-      if (typeof win.getSelection != "undefined") {
-          sel = win.getSelection();
-          if (sel.rangeCount > 0) {
-              var range = win.getSelection().getRangeAt(0);
-              var preCaretRange = range.cloneRange();
-              preCaretRange.selectNodeContents(element);
-              preCaretRange.setEnd(range.endContainer, range.endOffset);
-              caretOffset = preCaretRange.toString().length;
-          }
-      } else if ( (sel = doc.selection) && sel.type != "Control") {
-          var textRange = sel.createRange();
-          var preCaretTextRange = doc.body.createTextRange();
-          preCaretTextRange.moveToElementText(element);
-          preCaretTextRange.setEndPoint("EndToEnd", textRange);
-          caretOffset = preCaretTextRange.text.length;
-      }
-      console.log(caretOffset);
-      return caretOffset;
-  } */
+        else if ((sel = document['selection']) && sel.type != "Control") {
+            range = sel.createRange();
+            precedingRange = range.duplicate();
+            precedingRange.moveToElementText(containerEl);
+            precedingRange.setEndPoint("EndToStart", range);
+            precedingChar = precedingRange.text.slice(-1);
+        }
+        return precedingChar;
+    };
     Story1Component.prototype.pasteKeywordHtml = function (keyhtml) {
         var editor = document.getElementById("description");
         var range = this.saveRange;
         var sel = this.savedsel;
         range.deleteContents();
-        $("#keymarker").remove();
+        $(".keymarker").remove();
         // Range.createContextualFragment() would be useful here but is
         // non-standard and not supported in all browsers (IE9, for one)
         var el = document.createElement("div");
@@ -3968,6 +4058,7 @@ var Story1Component = (function () {
         $('.list2').hide();
         this.keywordShow = false;
         this.keywordCatShow = false;
+        editor.normalize();
         return false;
     };
     Story1Component.prototype.getSelectionCoords = function () {
@@ -4018,51 +4109,124 @@ var Story1Component = (function () {
         }
         return { x: x, y: y };
     };
+    Story1Component.prototype.selectElementText = function (el, win) {
+        win = win || window;
+        var doc = win.document, sel, range;
+        if (win.getSelection && doc.createRange) {
+            range = doc.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            sel = win.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+        else if (doc.body.createTextRange) {
+            range = doc.body.createTextRange();
+            range.moveToElementText(el);
+            range.select();
+        }
+    };
+    /*
+    getWordPrecedingCaret(containerEl) {
+      var preceding = "",
+          sel,
+          range,
+          precedingRange;
+      if (window.getSelection) {
+          sel = window.getSelection();
+          if (sel.rangeCount > 0) {
+              range = sel.getRangeAt(0).cloneRange();
+              range.collapse(true);
+              range.setStart(containerEl, 0);
+              preceding = range.toString();
+          }
+      } else if ((sel = document['selection']) && sel.type != "Control") {
+          range = sel.createRange();
+          precedingRange = range.duplicate();
+          precedingRange.moveToElementText(containerEl);
+          precedingRange.setEndPoint("EndToStart", range);
+          preceding = precedingRange.text;
+      }
+    
+      var words = range.toString().trim().split(' '),
+          lastWord = words[words.length - 1];
+          
+      if (lastWord) {
+          var resultValue = ''; // this value is coming from some other function
+          if (resultValue == lastWord) {
+              console.log('do nothing: ' + lastWord);
+              // do nothing
+          } else {
+              console.log('replace word ' + lastWord);
+              
+              // Find word start and end
+              var wordStart = range.toString().lastIndexOf(lastWord);
+              var wordEnd = wordStart + lastWord.length;
+              console.log("pos: (" + wordStart + ", " + wordEnd + ")");
+                             
+              range.setStart(containerEl.firstChild, wordStart);
+              range.setEnd(containerEl.firstChild, wordEnd);
+              range.deleteContents();
+              range.insertNode(document.createTextNode(resultValue));
+              // delete That specific word and replace if with resultValue
+    
+              // Merge multiple text nodes
+              containerEl.normalize();
+          }
+          return lastWord;
+      }
+    }*/
     Story1Component.prototype.onSubmit = function () {
     };
-    Story1Component.prototype.onKeytitre = function (event) {
-        this.titre_counter = event.target.value.length;
+    Story1Component.prototype.onKeytitre = function (e) {
+        this.titre_counter = e.target.value.length;
     };
-    Story1Component.prototype.onKey = function (event) {
-        //event.target.value = event.target.value.trim()
-        //console.log(event.target.value);
-        //console.log(event.target.value.trim().slice(-1));
-        if (event.target.value.trim().slice(-1) == "#") {
-            this.resultshow = false;
+    /*
+    
+      onKey(e: any) {
+        //e.target.value = e.target.value.trim()
+        //console.log(e.target.value);
+        //console.log(e.target.value.trim().slice(-1));
+        if (e.target.value.trim().slice(-1) == "#") {
+          this.resultshow = false;
         }
-        if (!event.target.value.includes("#")) {
-            this.resultshow = true;
-            this.resultshow2 = true;
+        if (!e.target.value.includes("#")) {
+          this.resultshow = true;
+          this.resultshow2 = true;
         }
-        if (event.target.value == "") {
-            this.resultshow = true;
+        if (e.target.value == "") {
+          this.resultshow = true;
         }
-        if (event.target.value.length >= 1) {
-            this.textcount = false;
+    
+        if (e.target.value.length >= 1) {
+          this.textcount = false;
         }
         else {
-            this.textcount = true;
+          this.textcount = true;
         }
-        var tag = event.target.value.trim().split("#").pop();
-        // console.log(tag);
+    
+        var tag = e.target.value.trim().split("#").pop();
+       // console.log(tag);
+    
         if (tag == "Musique" || tag == "musique") {
-            console.log("I am in true");
-            this.resultshow = true;
-            this.resultshow2 = false;
-            this.hashtag = false;
-            /*this.chip_back = "#860034";
-            this.chip_col = "#fff";
-            if(this.k == ""){
-             this.k = 0;
-            }
-            if(this.k < 1){
-             this.k++;
-            }*/
+          console.log("I am in true");
+          this.resultshow = true;
+          this.resultshow2 = false;
+          this.hashtag = false;
+          /*this.chip_back = "#860034";
+          this.chip_col = "#fff";
+          if(this.k == ""){
+           this.k = 0;
+          }
+          if(this.k < 1){
+           this.k++;
+          }//
+        } else {
+          //console.log("I am in false");
         }
-        else {
-            //console.log("I am in false");
-        }
-    };
+    
+      }
+      */
     Story1Component.prototype.hideresults = function () {
         this.resultshow = true;
         this.resultshow2 = true;
