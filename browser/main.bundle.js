@@ -3645,7 +3645,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contentEditable=true]:empty:before {\n  content: attr(placeholder);\n  color: grey; }\n\n[contentEditable=true]:empty:focus:before {\n  content: \"\"; }\n\n#description {\n  float: left;\n  min-height: 90px !important;\n  max-height: 90px !important;\n  overflow-y: scroll;\n  outline: none;\n  padding-top: 10px;\n  border-bottom: 1px solid grey;\n  display: block;\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.autolist {\n  position: absolute;\n  width: auto !important;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999; }\n\n.autolist .autotext_li {\n  width: 328px;\n  /*80vw;*/\n  height: 56px; }\n\nul {\n  list-style-type: none; }\n\nul li {\n  /* display: block;*/ }\n\n/*\n.autotext .key-name{\n  padding-right: 150px;\n}*/\n.list2 ul {\n  border-bottom: 1px solid black !important;\n  padding: 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-top: 25px;\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 34px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  position: fixed;\n  top: 94px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 137px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none;\n  position: absolute;\n  /*top: 20vh;*/\n  margin-top: 70px;\n  right: 2vw; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 280px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px;\n  position: absolute;\n  right: 4vw; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 355px; }\n\n.social2 {\n  position: fixed;\n  top: 416px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 474px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 369px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 429px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 485px; }\n\n#clear:hover {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contentEditable=true]:empty:before {\n  content: attr(placeholder);\n  color: grey; }\n\n[contentEditable=true]:empty:focus:before {\n  content: \"\"; }\n\n#description {\n  float: left;\n  min-height: 90px !important;\n  max-height: 90px !important;\n  overflow-y: scroll;\n  outline: none;\n  padding-top: 10px;\n  border-bottom: 1px solid grey;\n  display: block;\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.autolist {\n  position: fixed;\n  width: auto !important;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999;\n  height: 280px;\n  /*280px;40vh;*/\n  overflow-y: scroll; }\n\n.autolist .autotext_li {\n  width: 328px;\n  /*80vw;*/\n  height: 56px;\n  /*56px;15vh;*/ }\n\nul {\n  list-style-type: none; }\n\nul li {\n  /* display: block;*/ }\n\n/*\n.autotext .key-name{\n  padding-right: 150px;\n}*/\n.list2 ul {\n  /*border-bottom: 1px solid black !important;*/\n  padding: 5px 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-top: 25px;\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 34px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  position: fixed;\n  top: 94px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 137px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none;\n  position: absolute;\n  /*top: 20vh;*/\n  margin-top: 70px;\n  right: 2vw; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 280px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px;\n  position: absolute;\n  right: 4vw; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 355px; }\n\n.social2 {\n  position: fixed;\n  top: 416px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 474px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 369px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 429px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 485px; }\n\n#clear:hover {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -3744,6 +3744,19 @@ var Story1Component = (function () {
         var that = this;
         $(document).ready(function () {
             that.clearPlaceHolder();
+            $('#description').on('focus', function () {
+                $(window).scrollTop(10);
+                var keyboard_shown = $(window).scrollTop() > 0;
+                $(window).scrollTop(0);
+                // $('#front').append(keyboard_shown?'keyboard ':'nokeyboard ');
+            });
+            /*
+            if (/Mobi/i.test(navigator.userAgent)) {
+                  $('html').css({"overflow":"auto"});
+                  $('body').css({"height":"auto"});
+                  $('body').css({"overflow":"auto"});
+                  $('.scrollable').css({"position":"inherit"});
+              }*/
             $("[contenteditable]").focusout(function () {
                 var element = $(this);
                 if (!element.text().trim().length) {
@@ -3784,11 +3797,13 @@ var Story1Component = (function () {
                         //   $(".keymarker").remove();
                     }
                     else {
-                        $('.autotext').css('left', 'auto').css('right', 'auto').hide();
+                        $('.autotext').css('left', 'auto').css('right', 'auto').css('height', '280px').hide();
                         that.updateKeywordListByStr(searchKeyword);
                         if (that.matchKeywords && that.matchKeywords.length) {
                             var postCss = that.getAutoListPos();
                             $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
+                            var autoListH = that.getAutoListHeight('keyword');
+                            $(".autotext").css('height', autoListH).show();
                         }
                     }
                 }
@@ -3929,6 +3944,7 @@ var Story1Component = (function () {
         }
     };
     Story1Component.prototype.selectKeyword = function (e, keywordObj) {
+        var _this = this;
         //console.log(keywordObj);
         e.preventDefault();
         this.selectedKeyword = keywordObj;
@@ -3936,8 +3952,10 @@ var Story1Component = (function () {
             var cords = that.savedCords;
             $('.autotext').hide();
             var postCss = that.getAutoListPos();
-            $('.list2').css('left', 'auto').css('right', 'auto');
+            $('.list2').css('left', 'auto').css('right', 'auto').css('height', '280px');
             $('.list2').css('top', cords.y + 18).css(postCss.pos, postCss.x).show();
+            var autoListH = _this.getAutoListHeight('keywordcat');
+            $(".list2").css('height', autoListH).show();
             //   that.getKeywordCategories(that.selectedKeyword);
         }, 100, this);
     };
@@ -3951,7 +3969,10 @@ var Story1Component = (function () {
                 break;
             }
         }
+        $('.list2').css('left', 'auto').css('right', 'auto').css('height', '280px');
         $('.list2').css('top', cords.y + 18).css('left', cords.x).show();
+        var autoListH = this.getAutoListHeight('keywordcat');
+        $(".list2").css('height', autoListH).show();
         this.keywordCatShow = true;
         this.selectedKeyword = selectedKeyword;
     };
@@ -4038,6 +4059,27 @@ var Story1Component = (function () {
           posCss = {'pos':'right', 'x':compareWidth};
       }*/
         return posCss;
+    };
+    Story1Component.prototype.getAutoListHeight = function (type) {
+        var screenHeight = window.screen.availHeight;
+        var pageHeight = window.innerHeight;
+        if (type == 'keyword') {
+            var autoListTopPos = $(".autotext").position().top;
+            var autoListH = $(".autotext").height();
+        }
+        else if (type == 'keywordcat') {
+            var autoListTopPos = $(".list2").position().top;
+            var autoListH = $(".list2").height();
+        }
+        var bottomH = $('#bottom-bar').height();
+        var autoListRemainH = pageHeight - autoListTopPos - bottomH - 5;
+        if (autoListRemainH > autoListH) {
+            autoListRemainH = autoListH - 20; //+'px';
+        }
+        else {
+            autoListRemainH = autoListRemainH; //+'px';
+        }
+        return autoListRemainH;
     };
     Story1Component.prototype.getCharacterPrecedingCaret = function (containerEl) {
         var precedingChar = "", sel, range, precedingRange;
