@@ -3633,7 +3633,7 @@ var SlasherDataService = (function () {
 /***/ "../../../../../src/app/story/1/1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"back\">\r\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\r\n</div>\r\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\r\n\r\n\t<div class=\"top-div\">\r\n\r\n\t<p class=\"text-top\">Pas maintenant</p>\r\n\r\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"disablePublish\">PUBLIER</button>\r\n\r\n\t</div>\r\n\r\n\r\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\r\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\r\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\r\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\r\n        </mat-form-field >\r\n\r\n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\r\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\r\n                Here is some nice text\r\n            </div>\r\n        </mat-form-field-->\r\n\r\n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\r\n          label=\"Moi, Sarah…\"\r\n          type=\"text\"\r\n          (keyup)=\"onKeytitre($event)\"\r\n            maxlength=\"50\">\r\n        </mdc-text-field>\r\n       <p id=\"counter\">{{titre_counter}}/50</p>\r\n\t\t\t\t<br>\r\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\r\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\"\r\n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\r\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput placeholder=\"Ma biographie\"\r\n                (click)=\"onClick($event)\"  (keyup)=\"floatSuggestion($event)\">\r\n            </div>\r\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\r\n          <!--/mat-form-field-->\r\n\r\n\t </form>\r\n\r\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\r\n\t    <mdc-list id=\"autotextlist\">\r\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\r\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\r\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>\r\n        </mdc-list-item>\r\n    </mdc-list>\r\n\t</div>\r\n\r\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\r\n\t    <mdc-list id=\"autotextlist2\">\r\n        <mdc-list-item *ngFor=\"let keycat of categories\" class=\"autotext_li\" (click)=\"selectKeywordCat($event, keycat)\">\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\r\n                <span class=\"mdc-list-item__text\">\r\n                  {{selectedKeyword.name}}\r\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n        </mdc-list-item>\r\n\t  </mdc-list>\r\n\r\n\t</div>\r\n\r\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\r\n\r\n\r\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\r\n\t\t  label=\"Moi, Sarah…\"\r\n\t\t  type=\"text\"\r\n\t\t  (keyup)=\"onKeytitre($event)\"\r\n\t\t\tmaxlength=\"50\"\r\n\t\t  >\r\n\t\t</mdc-text-field>\r\n       <p id=\"counter\">{{titre_counter}}/50</p>\r\n        <br>\r\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\r\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\r\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\r\n\t\t\t  </mat-form-field>\r\n\r\n\r\n\r\n\t </form-->\r\n\r\n\r\n\t<div class=\"content\">\r\n\t\t<p id=\"single-line\">À propos de vous :</p>\r\n\t\t<p id=\"text-2\">Mes liens</p>\r\n\r\n\r\n\r\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\r\n\r\n\t\t<div id=\"icon-down\" (click)=\"social()\">\r\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\r\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n\t<div class=\"content-2\" [hidden]=\"true\">\r\n\r\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\r\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\r\n\r\n\t</div>\r\n\r\n  <mat-chip-list [hidden]=\"true\">\r\n\t<div id=\"wrapper\" class=\"style-4\">\r\n    <div class=\"table\" >\r\n        <div class=\"tr\" >\r\n            <div class=\"td\">\r\n\t\t      <mat-chip style=\"border-color: #860034;\"\r\n\t\t       [style.background-color] = \"chip_back\"\r\n\t\t\t [style.color] = \"chip_col\"\r\n\t\t\t (click)=\"showcard()\"\r\n\t\t      >\r\n\t\t  \tCompétences {{k}}\r\n\t\t\t</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\r\n            </div>\r\n\t        </div>\r\n\t    </div>\r\n\t</div>\r\n   </mat-chip-list>\r\n\r\n\t<!-- TRIGGER ELEMENTS -->\r\n\t<div id=\"social\" [hidden]=\"socialshow\">\r\n\r\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\r\n\t\t</i>\r\n\r\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\r\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\r\n\t\t\t</i>\r\n\r\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\r\n\r\n\t\t<i class=\"fab fa-twitter fa-lg\">\r\n\t\t\t</i>\r\n\r\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\r\n\t</div>\r\n\r\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\r\n\t\t\t<div class=\"count-shot\">22949 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\r\n\t\t\t<div class=\"count-shot\">13532 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\r\n\t\t\t<div class=\"count-shot\">9427 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\r\n\t\t\t<div class=\"count-shot\">8371 shots</div>\r\n\t\t</mdc-list-item>\r\n\t</mdc-list>\r\n\r\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\r\n\t\t<mdc-list-item>\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<!--<ul>\r\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\r\n\t\t\t</ul>-->\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<!--<ul>\r\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\r\n\t\t\t</ul>-->\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t<!--\t<ul>\r\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\r\n\t\t\t</ul>-->\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t</mdc-list>\r\n\r\n\r\n<div [hidden]=\"card\">\r\n\t<mdc-card >\r\n  <mdc-card-primary >\r\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\r\n    </mdc-card-title>\r\n  </mdc-card-primary>\r\n  <mdc-card-supporting-text>\r\n\t  <ul>\r\n\t\t  <li class=\"checkli\">\r\n\t\t\t   <mdc-form-field >\r\n\t\t\t\t<label>Musique</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\"\r\n\t\t\t\t\t(click)=\"checkboxclick()\">\r\n\t\t\t\t\t</mdc-checkbox>\r\n\t\t\t\t</div>\r\n\t\t</mdc-form-field>\r\n\t\t  </li>\r\n\t\t  <li class=\"checkli\">\r\n\t\t\t<mdc-form-field>\r\n\t\t\t\t\t\t\t<label>Composition</label>\r\n\t\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\r\n\t\t\t\t\t\t\t</mdc-checkbox>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t</mdc-form-field>\r\n\t\t  </li>\r\n\t\t <li class=\"checkli\">\r\n\t\t\t <mdc-form-field>\r\n\t\t\t\t<label>BeatMaking</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\r\n\t\t\t</mdc-checkbox>\r\n\t\t\t\t</div>\r\n\t\t</mdc-form-field>\r\n\t\t </li>\r\n\r\n\r\n\r\n\r\n\r\n\t  </ul>\r\n\r\n  </mdc-card-supporting-text>\r\n</mdc-card>\r\n</div>\r\n\r\n</div>\r\n\r\n   <div id=\"bottom-bar\" [hidden]=\"false\">\r\n\r\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\r\n\t\t  \t<div id=\"elipse\">\r\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\r\n\t\t  \t\thighlight\r\n\t\t  \t\t</mdc-icon>\r\n\t\t  \t</div>\r\n\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\r\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\r\n\t\t</button>\r\n\r\n   </div>\r\n\r\n\r\n"
+module.exports = "<div id=\"back\">\r\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\r\n</div>\r\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\r\n\r\n\t<div class=\"top-div\">\r\n\r\n\t<p class=\"text-top\">Pas maintenant</p>\r\n\r\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"disablePublish\">PUBLIER</button>\r\n\r\n\t</div>\r\n\r\n\r\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\r\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\r\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\r\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\r\n        </mat-form-field >\r\n\r\n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\r\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\r\n                Here is some nice text\r\n            </div>\r\n        </mat-form-field-->\r\n\r\n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\r\n          label=\"Moi, Sarah…\"\r\n          type=\"text\"\r\n          (keyup)=\"onKeytitre($event)\"\r\n            maxlength=\"50\">\r\n        </mdc-text-field>\r\n       <p id=\"counter\">{{titre_counter}}/50</p>\r\n\t\t\t\t<br>\r\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\r\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\"\r\n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\r\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput placeholder=\"Ma biographie\"\r\n                (click)=\"onClick($event)\">\r\n            </div>\r\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\r\n          <!--/mat-form-field-->\r\n\r\n\t </form>\r\n\r\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\r\n\t    <mdc-list id=\"autotextlist\">\r\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\r\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\r\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>\r\n        </mdc-list-item>\r\n    </mdc-list>\r\n\t</div>\r\n\r\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\r\n\t    <mdc-list id=\"autotextlist2\">\r\n        <mdc-list-item *ngFor=\"let keycat of categories\" class=\"autotext_li\" (click)=\"selectKeywordCat($event, keycat)\">\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\r\n                <span class=\"mdc-list-item__text\">\r\n                  {{selectedKeyword.name}}\r\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n        </mdc-list-item>\r\n\t  </mdc-list>\r\n\r\n\t</div>\r\n\r\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\r\n\r\n\r\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\r\n\t\t  label=\"Moi, Sarah…\"\r\n\t\t  type=\"text\"\r\n\t\t  (keyup)=\"onKeytitre($event)\"\r\n\t\t\tmaxlength=\"50\"\r\n\t\t  >\r\n\t\t</mdc-text-field>\r\n       <p id=\"counter\">{{titre_counter}}/50</p>\r\n        <br>\r\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\r\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\r\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\r\n\t\t\t  </mat-form-field>\r\n\r\n\r\n\r\n\t </form-->\r\n\r\n\r\n\t<div class=\"content\">\r\n\t\t<p id=\"single-line\">À propos de vous :</p>\r\n\t\t<p id=\"text-2\">Mes liens</p>\r\n\r\n\r\n\r\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\r\n\r\n\t\t<div id=\"icon-down\" (click)=\"social()\">\r\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\r\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n\t<div class=\"content-2\" [hidden]=\"true\">\r\n\r\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\r\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\r\n\r\n\t</div>\r\n\r\n  <mat-chip-list [hidden]=\"true\">\r\n\t<div id=\"wrapper\" class=\"style-4\">\r\n    <div class=\"table\" >\r\n        <div class=\"tr\" >\r\n            <div class=\"td\">\r\n\t\t      <mat-chip style=\"border-color: #860034;\"\r\n\t\t       [style.background-color] = \"chip_back\"\r\n\t\t\t [style.color] = \"chip_col\"\r\n\t\t\t (click)=\"showcard()\"\r\n\t\t      >\r\n\t\t  \tCompétences {{k}}\r\n\t\t\t</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip>\r\n            </div>\r\n            <div class=\"td\">\r\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\r\n            </div>\r\n\t        </div>\r\n\t    </div>\r\n\t</div>\r\n   </mat-chip-list>\r\n\r\n\t<!-- TRIGGER ELEMENTS -->\r\n\t<div id=\"social\" [hidden]=\"socialshow\">\r\n\r\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\r\n\t\t</i>\r\n\r\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\r\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\r\n\t\t\t</i>\r\n\r\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\r\n\r\n\t\t<i class=\"fab fa-twitter fa-lg\">\r\n\t\t\t</i>\r\n\r\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\r\n\t</div>\r\n\r\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\r\n\t\t\t<div class=\"count-shot\">22949 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\r\n\t\t\t<div class=\"count-shot\">13532 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\r\n\t\t\t<div class=\"count-shot\">9427 shots</div>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\r\n\t\t\t<div class=\"count-shot\">8371 shots</div>\r\n\t\t</mdc-list-item>\r\n\t</mdc-list>\r\n\r\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\r\n\t\t<mdc-list-item>\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<!--<ul>\r\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\r\n\t\t\t</ul>-->\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t\t<!--<ul>\r\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\r\n\t\t\t</ul>-->\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t\t<mdc-list-item>\r\n\t\t<!--\t<ul>\r\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\r\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\r\n\t\t\t</ul>-->\r\n\r\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\r\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\r\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\r\n                  #musique\r\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\r\n                </span>\r\n              </li>\r\n      </ul>\r\n\t\t</mdc-list-item>\r\n\t</mdc-list>\r\n\r\n\r\n<div [hidden]=\"card\">\r\n\t<mdc-card >\r\n  <mdc-card-primary >\r\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\r\n    </mdc-card-title>\r\n  </mdc-card-primary>\r\n  <mdc-card-supporting-text>\r\n\t  <ul>\r\n\t\t  <li class=\"checkli\">\r\n\t\t\t   <mdc-form-field >\r\n\t\t\t\t<label>Musique</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\"\r\n\t\t\t\t\t(click)=\"checkboxclick()\">\r\n\t\t\t\t\t</mdc-checkbox>\r\n\t\t\t\t</div>\r\n\t\t</mdc-form-field>\r\n\t\t  </li>\r\n\t\t  <li class=\"checkli\">\r\n\t\t\t<mdc-form-field>\r\n\t\t\t\t\t\t\t<label>Composition</label>\r\n\t\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\r\n\t\t\t\t\t\t\t</mdc-checkbox>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t</mdc-form-field>\r\n\t\t  </li>\r\n\t\t <li class=\"checkli\">\r\n\t\t\t <mdc-form-field>\r\n\t\t\t\t<label>BeatMaking</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\r\n\t\t\t</mdc-checkbox>\r\n\t\t\t\t</div>\r\n\t\t</mdc-form-field>\r\n\t\t </li>\r\n\r\n\r\n\r\n\r\n\r\n\t  </ul>\r\n\r\n  </mdc-card-supporting-text>\r\n</mdc-card>\r\n</div>\r\n\r\n</div>\r\n\r\n   <div id=\"bottom-bar\" [hidden]=\"false\">\r\n\r\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\r\n\t\t  \t<div id=\"elipse\">\r\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\r\n\t\t  \t\thighlight\r\n\t\t  \t\t</mdc-icon>\r\n\t\t  \t</div>\r\n\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\r\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\r\n\t\t</button>\r\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\r\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\r\n\t\t</button>\r\n\r\n   </div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -3775,6 +3775,7 @@ var Story1Component = (function () {
                         that.selectElementText(lastItem, window);
                     }
                 }
+                that.floatSuggestion(e);
             });
             $("#description").on('keyup', function (e) {
                 var fieldData = $(this).text();
@@ -3795,18 +3796,24 @@ var Story1Component = (function () {
                         $('.autotext').hide();
                         $('.list2').hide();
                         $('#bottom-bar').show();
-                        //   $(".keymarker").remove();
+                        console.log('1 ');
                     }
                     else {
                         $('.autotext').css('left', 'auto').css('right', 'auto').css('height', '280px').hide();
                         that.updateKeywordListByStr(searchKeyword);
                         $('#bottom-bar').show();
+                        console.log('2');
                         if (that.matchKeywords && that.matchKeywords.length) {
+                            console.log('3');
                             var postCss = that.getAutoListPos();
                             $('#bottom-bar').hide();
                             $('.autotext').css('top', that.savedCords.y + 18).css(postCss.pos, postCss.x).show();
                             var autoListH = that.getAutoListHeight('keyword');
                             $(".autotext").css('height', autoListH).show();
+                        }
+                        else {
+                            console.log('4');
+                            that.floatSuggestion(e, false);
                         }
                     }
                 }
@@ -4014,17 +4021,39 @@ var Story1Component = (function () {
             // # END set form back it's position
         }
     };
-    Story1Component.prototype.floatSuggestion = function (e) {
+    Story1Component.prototype.floatSuggestion = function (e, show) {
+        if (show === void 0) { show = true; }
         var fromTop = $('.top-div').height();
         var currentPos = e.screenY + 'px';
         // reset the suggestion list Y pos
         $('.autolist').css('top', currentPos);
+        this.enableAutoSearch(e);
         // keyCodes may different on OS and versions !
-        if (e.keyCode == 51 || e.keyCode == 35 || e.keyCode == 229) {
+        // alert(e.keyCode)
+        // `(>_<)` Bug in android for keyCode from generate KeyEvent
+        var el = document.getElementById("description");
+        var inputChar;
+        if (/(android)/i.test(navigator.userAgent)) {
+            inputChar = this.getCharacterPrecedingCaret(el);
+        }
+        else {
+            inputChar = e.key;
+        }
+        if (inputChar == '#') {
             $('#titre').css('opacity', '0');
             $('#description').addClass('float-up');
-            this.enableAutoSearch(e);
         }
+        else {
+            $('#titre').css('opacity', '1');
+            $('#description').removeClass('float-up');
+        }
+        // if ((e.keyCode == 51 || e.keyCode == 35) && show) {
+        //   $('#titre').css('opacity', '0')
+        //   $('#description').addClass('float-up');
+        // } else {
+        //   $('#titre').css('opacity', '1')
+        //   $('#description').removeClass('float-up');
+        // }
     };
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
@@ -4249,10 +4278,10 @@ var Story1Component = (function () {
           precedingRange.setEndPoint("EndToStart", range);
           preceding = precedingRange.text;
       }
-    
+  
       var words = range.toString().trim().split(' '),
           lastWord = words[words.length - 1];
-    
+  
       if (lastWord) {
           var resultValue = ''; // this value is coming from some other function
           if (resultValue == lastWord) {
@@ -4260,18 +4289,18 @@ var Story1Component = (function () {
               // do nothing
           } else {
               console.log('replace word ' + lastWord);
-    
+  
               // Find word start and end
               var wordStart = range.toString().lastIndexOf(lastWord);
               var wordEnd = wordStart + lastWord.length;
               console.log("pos: (" + wordStart + ", " + wordEnd + ")");
-    
+  
               range.setStart(containerEl.firstChild, wordStart);
               range.setEnd(containerEl.firstChild, wordEnd);
               range.deleteContents();
               range.insertNode(document.createTextNode(resultValue));
               // delete That specific word and replace if with resultValue
-    
+  
               // Merge multiple text nodes
               containerEl.normalize();
           }
@@ -4284,7 +4313,7 @@ var Story1Component = (function () {
         this.titre_counter = e.target.value.length;
     };
     /*
-    
+  
       onKey(e: any) {
         //e.target.value = e.target.value.trim()
         //console.log(e.target.value);
@@ -4299,17 +4328,17 @@ var Story1Component = (function () {
         if (e.target.value == "") {
           this.resultshow = true;
         }
-    
+  
         if (e.target.value.length >= 1) {
           this.textcount = false;
         }
         else {
           this.textcount = true;
         }
-    
+  
         var tag = e.target.value.trim().split("#").pop();
        // console.log(tag);
-    
+  
         if (tag == "Musique" || tag == "musique") {
           console.log("I am in true");
           this.resultshow = true;
@@ -4326,7 +4355,7 @@ var Story1Component = (function () {
         } else {
           //console.log("I am in false");
         }
-    
+  
       }
       */
     Story1Component.prototype.hideresults = function () {
