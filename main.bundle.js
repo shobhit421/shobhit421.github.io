@@ -3633,7 +3633,7 @@ var SlasherDataService = (function () {
 /***/ "../../../../../src/app/story/1/1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"disablePublish\">PUBLIER</button>\t\n\n\t</div>\n\t\n\t\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n        \n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n        \n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\" \n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n\t\t\t\t<br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\" \n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput placeholder=\"Ma biographie\" \n                (click)=\"onClick($event)\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n              \n\t </form>\n\t\t\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>                   \n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\t\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" class=\"autotext_li\" (click)=\"selectKeywordCat($event, keycat)\">\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>  \n    \n\t</div>\n\t\t\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\t\t\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\" \n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\" \n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\t\n\t \n\t \n\t   \n\t </form-->\n\t\n\t\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\t\t\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\t\t\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"true\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\t\n  <mat-chip-list [hidden]=\"true\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">             \n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}} \n\t\t\t</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div> \n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip> \n            </div> \n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>           \n\t        </div>\n\t    </div>\n\t</div> \n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\t\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\t\t\t\t\t\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n      \n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\" \n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\t\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\t\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\t\t\n\t\t\n\t\t\n\t  </ul>\n\t\t\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\t\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  \n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\t\t  \t\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
+module.exports = "<div id=\"back\">\n\t<slashers-full-cropped-image #fullCroopedImage [imageSrc]=\"imageSrc\" [cropperPosition]=\"cropperPosition\"></slashers-full-cropped-image>\n</div>\n<div id=\"front\" class=\"story-form\" (click)=\"onPageClick($event);\">\n\n\t<div class=\"top-div\">\n\n\t<p class=\"text-top\">Pas maintenant</p>\n\n\t<button mdc-button class=\"btn\" [routerLink]=\"['./']\" [raised]=\"true\" [disabled]=\"disablePublish\">PUBLIER</button>\n\n\t</div>\n\n\n\t<form class=\"formwidth\" id=\"form\" (ngSubmit)=\"onSubmit()\" #myForm=\"ngForm\" [formGroup]=\"story\">\n\t    <!--mat-form-field  hintLabel=\"Max 10 characters\">\n          <input matInput #firstname maxlength=\"10\" placeholder=\"First Name\" [(ngModel)]=\"testForm.firstname\" name=\"firstname\">\n        <mat-hint align=\"end\">{{firstname.value?.length || 0}}/10</mat-hint>\n        </mat-form-field >\n\n        <mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\">\n            <div id=\"biodiv\" contenteditable=\"true\" style=\"width: 200px; height: 80px; border: 1px solid black;\" (keyup)=\"onKeyUp($event)\">\n                Here is some nice text\n            </div>\n        </mat-form-field-->\n\n        <mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n          label=\"Moi, Sarah…\"\n          type=\"text\"\n          (keyup)=\"onKeytitre($event)\"\n            maxlength=\"50\">\n        </mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n\t\t\t\t<br>\n        <!--mat-form-field id=\"description\"  dividerColor=\"primary\"  name=\"Description\" -->\n            <!--textarea matInput formControlName=\"description\" placeholder=\"Ma biographie\"\n            (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea-->\n            <div id=\"description\" contenteditable=\"true\" dividerColor=\"primary\" matInput placeholder=\"Ma biographie\"\n                (click)=\"onClick($event)\">\n            </div>\n            <mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n          <!--/mat-form-field-->\n\n\t </form>\n\n\t<div class=\"keyresults abs autotext autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist\">\n        <mdc-list-item *ngFor=\"let dkey of matchKeywords\" class=\"autotext_li\" (click)=\"selectKeyword($event, dkey)\">\n            <div class=\"key-name\" style=\"color: rgba(0, 0, 0, 0.87)\">{{dkey.name}}</div>\n            <div class=\"count-shot\">{{dkey.shots}} shots</div>\n        </mdc-list-item>\n    </mdc-list>\n\t</div>\n\n\t<div class=\"list2 abs autolist\" style=\"display: none;\">\n\t    <mdc-list id=\"autotextlist2\">\n        <mdc-list-item *ngFor=\"let keycat of categories\" class=\"autotext_li\" (click)=\"selectKeywordCat($event, keycat)\">\n\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" [style.color]=keycat.color>\n                <span class=\"mdc-list-item__text\">\n                  {{selectedKeyword.name}}\n                  <span class=\"mdc-list-item__secondary-text\">{{keycat.category}}</span>\n                </span>\n              </li>\n      </ul>\n        </mdc-list-item>\n\t  </mdc-list>\n\n\t</div>\n\n\t <!--form (ngSubmit)=\"onSubmit()\" id=\"form\" [formGroup]=\"story\">\n\n\n\t\t<mdc-text-field id=\"titre\" formControlName=\"titre\" name=\"Titre\"\n\t\t  label=\"Moi, Sarah…\"\n\t\t  type=\"text\"\n\t\t  (keyup)=\"onKeytitre($event)\"\n\t\t\tmaxlength=\"50\"\n\t\t  >\n\t\t</mdc-text-field>\n       <p id=\"counter\">{{titre_counter}}/50</p>\n        <br>\n\t\t<mat-form-field id=\"description\"  dividerColor=\"primary\" formControlName=\"story.description\" name=\"Description\" >\n\t\t\t\t<textarea matInput placeholder=\"Ma biographie\" (keyup)=\"onKeyUp($event)\" [(ngModel)]=\"str\" [ngModelOptions]=\"{standalone: true}\" rows=\"3\" ></textarea>\n\t\t\t\t<mdc-icon matSuffix class=\"micbtn\">mic</mdc-icon>\n\t\t\t  </mat-form-field>\n\n\n\n\t </form-->\n\n\n\t<div class=\"content\">\n\t\t<p id=\"single-line\">À propos de vous :</p>\n\t\t<p id=\"text-2\">Mes liens</p>\n\n\n\n\t\t<p id=\"text-3\">Où vous retrouver sur le web</p>\n\n\t\t<div id=\"icon-down\" (click)=\"social()\">\n\t\t\t<mdc-icon *ngIf=\"socialshow\">keyboard_arrow_down</mdc-icon>\n\t\t\t<mdc-icon *ngIf=\"!socialshow\">keyboard_arrow_up</mdc-icon>\n\t\t</div>\n\n\t</div>\n\n\t<div class=\"content-2\" [hidden]=\"true\">\n\n\t\t<p id=\"text-4\">Dans votre écosystème :</p>\n\t\t<p id=\"text-5\">Vous évoquez ici :</p>\n\n\t</div>\n\n  <mat-chip-list [hidden]=\"true\">\n\t<div id=\"wrapper\" class=\"style-4\">\n    <div class=\"table\" >\n        <div class=\"tr\" >\n            <div class=\"td\">\n\t\t      <mat-chip style=\"border-color: #860034;\"\n\t\t       [style.background-color] = \"chip_back\"\n\t\t\t [style.color] = \"chip_col\"\n\t\t\t (click)=\"showcard()\"\n\t\t      >\n\t\t  \tCompétences {{k}}\n\t\t\t</mat-chip>\n            </div>\n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #df3275;\">Super Pouvoirs</mat-chip>\n            </div>\n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #006c95;\">Centres d’intérêts</mat-chip>\n            </div>\n            <div class=\"td\">\n                 <mat-chip style=\"border-color: #2c9cc7\">Motivations</mat-chip>\n            </div>\n            <div class=\"td\">\n                <mat-chip style=\"border-color: #ff9439\">Valeurs</mat-chip>\n            </div>\n            <div class=\"td\">\n                <mat-chip style=\"border-color: #60b300\">Spots</mat-chip>\n            </div>\n\t        </div>\n\t    </div>\n\t</div>\n   </mat-chip-list>\n\n\t<!-- TRIGGER ELEMENTS -->\n\t<div id=\"social\" [hidden]=\"socialshow\">\n\n\t\t<i class=\"fab fa-facebook-f fa-lg\">\n\t\t</i>\n\n\t\t<p class=\"social1\" >facebook.com/sarahaoki.03</p>\n\t\t\t<i class=\"fab fa-linkedin-in fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social2\" mdc-button  [raised]=\"true\" >Ajouter mon compte Linkedin</button>\n\n\t\t<i class=\"fab fa-twitter fa-lg\">\n\t\t\t</i>\n\n\t\t<button  class= \"social-btn social3\" mdc-button [raised]=\"true\" >Ajouter mon compte Twitter</button>\n\t</div>\n\n\t<mdc-list id=\"results\" [hidden]=\"resultshow\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\" >#musique</div>\n\t\t\t<div class=\"count-shot\">22949 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 170px\">#music</div>\n\t\t\t<div class=\"count-shot\">13532 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 150px\">#musicien</div>\n\t\t\t<div class=\"count-shot\">9427 shots</div>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<div style=\"padding-right: 80px\">#MusiqueClassique</div>\n\t\t\t<div class=\"count-shot\">8371 shots</div>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\t<mdc-list id=\"results2\" [hidden]=\"resultshow2\" (click)=\"hideresults()\">\n\t\t<mdc-list-item>\n\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #006c95;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Centre d’interêts</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #860034;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Compétence</div>\n\t\t\t</ul>-->\n\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #860034;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Compétence</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t\t<!--<ul>\n\t\t\t\t<li style=\" color: #df3275;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Super pouvoir</div>\n\t\t\t</ul>-->\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #df3275;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Super pouvoir</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t\t<mdc-list-item>\n\t\t<!--\t<ul>\n\t\t\t\t<li style=\" color: #2c9cc7;\">#musique</li>\n\t\t\t\t<div class=\"count-shot2\">Motivation</div>\n\t\t\t</ul>-->\n\n      <ul class=\"mdc-list mdc-list--two-line mdc-list--dense demo-list\">\n              <li class=\"mdc-list-item\" style=\" color: #2c9cc7;\">\n                <span class=\"mdc-list-item__text\" (click)=\"updateinput('musique')\">\n                  #musique\n                  <span class=\"mdc-list-item__secondary-text\">Motivation</span>\n                </span>\n              </li>\n      </ul>\n\t\t</mdc-list-item>\n\t</mdc-list>\n\n\n<div [hidden]=\"card\">\n\t<mdc-card >\n  <mdc-card-primary >\n    <mdc-card-title><strong>Compétences</strong>  évoquées ici :  <mdc-icon (click)=\"showcard()\" id=\"clear\" class=\"Shape\">highlight_off</mdc-icon>\n    </mdc-card-title>\n  </mdc-card-primary>\n  <mdc-card-supporting-text>\n\t  <ul>\n\t\t  <li class=\"checkli\">\n\t\t\t   <mdc-form-field >\n\t\t\t\t<label>Musique</label>\n\t\t\t\t<div>\n\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"musiquecheckboxFlag\"\n\t\t\t\t\t(click)=\"checkboxclick()\">\n\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t  </li>\n\t\t  <li class=\"checkli\">\n\t\t\t<mdc-form-field>\n\t\t\t\t\t\t\t<label>Composition</label>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"compositioncheckboxFlag\">\n\t\t\t\t\t\t\t</mdc-checkbox>\n\t\t\t\t\t\t\t</div>\n\t\t\t</mdc-form-field>\n\t\t  </li>\n\t\t <li class=\"checkli\">\n\t\t\t <mdc-form-field>\n\t\t\t\t<label>BeatMaking</label>\n\t\t\t\t<div>\n\t\t\t\t\t<mdc-checkbox  [checked] = \"false\" [(ngModel)]=\"beatmakingcheckboxFlag\">\n\t\t\t</mdc-checkbox>\n\t\t\t\t</div>\n\t\t</mdc-form-field>\n\t\t </li>\n\n\n\n\n\n\t  </ul>\n\n  </mdc-card-supporting-text>\n</mdc-card>\n</div>\n\n</div>\n\n   <div id=\"bottom-bar\" [hidden]=\"false\">\n\n   \t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">people</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\">location_on</mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\n\t\t  \t<div id=\"elipse\">\n\t\t  \t\t<mdc-icon class=\"icon-bottom\">\n\t\t  \t\thighlight\n\t\t  \t\t</mdc-icon>\n\t\t  \t</div>\n\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"true\">\n\t\t  <mdc-icon class=\"icon-bottom\"> <strong >@</strong> </mdc-icon>\n\t\t</button>\n\t\t<button mdc-button class=\"btn-bottom\" [disabled]=\"hashtag\">\n\t\t  <mdc-icon class=\"icon-bottom\"><strong>#</strong></mdc-icon>\n\t\t</button>\n\n   </div>\n\n\n"
 
 /***/ }),
 
@@ -3645,7 +3645,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contentEditable=true]:empty:before {\n  content: attr(placeholder);\n  color: grey; }\n\n[contentEditable=true]:empty:focus:before {\n  content: \"\"; }\n\n#description {\n  float: left;\n  min-height: 90px !important;\n  max-height: 90px !important;\n  overflow-y: scroll;\n  outline: none;\n  padding-top: 10px;\n  border-bottom: 1px solid grey;\n  display: block;\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.autolist {\n  position: absolute;\n  width: auto !important;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999; }\n\n.autolist .autotext_li {\n  width: 80vw;\n  height: 56px; }\n\nul {\n  list-style-type: none; }\n\nul li {\n  /* display: block;*/ }\n\n.autotext .key-name {\n  padding-right: 150px; }\n\n.list2 ul {\n  border-bottom: 1px solid black !important;\n  padding: 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-top: 25px;\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 34px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  position: fixed;\n  top: 94px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 137px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none;\n  position: absolute;\n  top: 20vh;\n  right: 2vw; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 280px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px;\n  position: absolute;\n  right: 4vw; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 355px; }\n\n.social2 {\n  position: fixed;\n  top: 416px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 474px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 369px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 429px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 485px; }\n\n#clear:hover {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "slashers-full-cropped-image {\n  width: 100vw;\n  height: 100vh;\n  -webkit-filter: blur(4px);\n  /* Safari 6.0 - 9.0 */\n  filter: blur(4px); }\n\ntextarea {\n  resize: none !important; }\n\n[contentEditable=true]:empty:before {\n  content: attr(placeholder);\n  color: grey; }\n\n[contentEditable=true]:empty:focus:before {\n  content: \"\"; }\n\ndiv[contenteditable] {\n  position: relative; }\n\ndiv[contenteditable] span {\n  position: absolute;\n  margin-left: 1em; }\n\n#description {\n  float: left;\n  min-height: 60px !important;\n  max-height: 60px !important;\n  overflow-y: scroll;\n  outline: none;\n  padding-top: 10px;\n  border-bottom: 1px solid grey;\n  display: block;\n  color: rgba(0, 0, 0, 0.87);\n  width: 93vw;\n  font-size: 16px;\n  transition: all 1s ease; }\n\n.mdc-list {\n  padding: 0; }\n\n#autotextlist2 ul li {\n  height: auto; }\n\n.float-up {\n  position: absolute;\n  top: -58px; }\n\n.autolist {\n  height: 200px;\n  overflow: auto;\n  font-size: 14px;\n  position: fixed;\n  width: auto !important;\n  display: inline-block;\n  background-color: #f6f6f6;\n  z-index: 9999;\n  height: 280px;\n  /*280px;40vh;*/\n  overflow-y: scroll; }\n\n.autotext {\n  padding-left: 10px; }\n\n.autotext .autotext_li {\n  width: 328px;\n  /*80vw;*/ }\n\n.list2 .autotext_li {\n  width: 328px;\n  /*80vw;*/\n  height: 56px;\n  /*56px;15vh;*/ }\n\nul {\n  list-style-type: none; }\n\nul li {\n  /* display: block;*/ }\n\n/*\n.autotext .key-name{\n  padding-right: 150px;\n}*/\n.list2 ul {\n  /*border-bottom: 1px solid black !important;*/\n  padding: 5px 10px;\n  margin-top: 5px; }\n\nli {\n  list-style: none; }\n\nmdc-checkbox {\n  position: relative;\n  left: 30px; }\n\n#back {\n  position: fixed;\n  z-index: 0;\n  height: 100vh;\n  width: 100vw; }\n\n#front {\n  position: absolute;\n  z-index: 1;\n  top: 0px;\n  height: 100vh;\n  width: 100vw;\n  background-color: rgba(255, 255, 255, 0.85); }\n\n.top-div {\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  margin: 0;\n  padding: 0; }\n\n.text-top {\n  padding-left: 23px;\n  size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\n.btn {\n  width: 120px;\n  height: 36px;\n  position: fixed;\n  top: 14px;\n  right: 16px;\n  color: #ffffff;\n  letter-spacing: 1.5px; }\n\n#form {\n  transition: all .5s ease;\n  position: fixed;\n  top: 55px;\n  left: 16px; }\n\n#titre {\n  width: 93vw;\n  height: 34px;\n  font-family: Roboto;\n  font-size: 22px;\n  color: rgba(0, 0, 0, 0.38); }\n\nmdc-textarea.label {\n  background-color: transparent; }\n\n#counter {\n  position: fixed;\n  top: 103px;\n  right: 3vw;\n  width: 38px;\n  height: 21px;\n  font-family: Roboto;\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.38); }\n\n.micbtn {\n  background-color: transparent;\n  color: #1565c0;\n  border: 0;\n  padding: 0;\n  text-decoration: none;\n  position: absolute;\n  /*top: 20vh;*/\n  margin-top: 40px;\n  right: 2vw; }\n\n.micbtn:hover {\n  cursor: pointer; }\n\n.content {\n  position: fixed;\n  top: 280px;\n  left: 16px; }\n\n#single-line {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.57); }\n\n#text-2 {\n  font-size: 12px;\n  color: #000000;\n  position: fixed;\n  left: 19px; }\n\n#text-3 {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.57);\n  position: fixed;\n  right: 55px; }\n\n#icon-down {\n  position: fixed;\n  right: 24px;\n  text-decoration: none;\n  margin-top: 6px; }\n\n#icon-down:hover {\n  cursor: pointer; }\n\n.content-2 {\n  position: fixed;\n  top: 420px;\n  left: 16px; }\n\n#text-4 {\n  font-size: 16px;\n  color: rgba(0, 0, 0, 0.87); }\n\n#text-5 {\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54); }\n\nmat-chip-list {\n  position: fixed;\n  top: 500px;\n  left: 16px; }\n\nmat-chip {\n  background-color: transparent;\n  border: solid 1px;\n  font-size: 14px;\n  color: rgba(0, 0, 0, 0.54);\n  white-space: nowrap;\n  text-align: center; }\n\nmat-chip:hover {\n  cursor: pointer; }\n\n#wrapper {\n  width: 96vw;\n  height: 60px;\n  overflow-x: scroll;\n  white-space: no-wrap; }\n\n.table {\n  display: table; }\n\n.tr {\n  display: table-row; }\n\n.td {\n  display: table-cell;\n  padding: 5px 5px 5px 5px; }\n\n.style-4::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 0px transparent;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar {\n  height: 4px;\n  width: 0px;\n  background-color: transparent; }\n\n.style-4::-webkit-scrollbar-thumb {\n  background-color: transparent;\n  border: 1px solid #E0E0E0; }\n\n#elipse {\n  width: 40px;\n  height: 40px;\n  border: solid 2px rgba(0, 0, 0, 0.54);\n  border-radius: 50%; }\n\n#bottom-bar {\n  position: fixed;\n  bottom: 0px;\n  right: 0px;\n  left: 0px;\n  height: 65px;\n  background-color: #E0E0E0;\n  z-index: 5;\n  text-align: center; }\n\n.icon-bottom {\n  font-size: 24px; }\n\n.btn-bottom {\n  text-align: center;\n  height: 65px;\n  width: auto; }\n\n#results {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\nmdc-list-item {\n  padding: 5px 20px 5px 20px; }\n\n.count-shot {\n  color: rgba(0, 0, 0, 0.37);\n  font-size: 14px;\n  position: absolute;\n  right: 4vw; }\n\n#results2 {\n  position: fixed;\n  top: 190px;\n  width: 320px;\n  height: 280px;\n  left: 16px;\n  background-color: #f6f6f6; }\n\n.count-shot2 {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px; }\n\n.demo-list {\n  font-size: 16px; }\n\nmdc-card {\n  position: fixed;\n  top: 220px;\n  left: 12px;\n  z-index: 10;\n  width: 296px;\n  border-radius: 3px;\n  background-color: #fafafa; }\n\nmdc-card-primary {\n  height: 50px;\n  background-color: #860034; }\n\nmdc-card-title {\n  color: #fff;\n  font-size: 16px; }\n\n#clear {\n  position: fixed;\n  margin-top: 5px;\n  margin-left: 40px; }\n\nmdc-form-field {\n  padding-top: 20px; }\n\n#social {\n  position: fixed;\n  top: 260px;\n  left: 23px; }\n\n.social-btn {\n  background-color: #0288d1;\n  color: #fff;\n  text-transform: capitalize;\n  left: 66px; }\n\n.social1 {\n  color: #0288d1;\n  font-size: 16px;\n  left: 66px;\n  position: fixed;\n  top: 355px; }\n\n.social2 {\n  position: fixed;\n  top: 416px;\n  width: 228px;\n  height: 36px; }\n\n.social3 {\n  position: fixed;\n  top: 474px;\n  width: 228px;\n  height: 36px; }\n\n.fa-facebook-f {\n  color: #0288d1;\n  top: 369px;\n  position: fixed; }\n\n.fa-linkedin-in {\n  color: #0288d1;\n  position: fixed;\n  top: 429px; }\n\n.fa-twitter {\n  color: #0288d1;\n  position: fixed;\n  top: 485px; }\n\n#clear:hover {\n  cursor: pointer; }\n\n.mdc-list {\n  padding: 0; }\n", ""]);
 
 // exports
 
@@ -3744,6 +3744,19 @@ var Story1Component = (function () {
         var that = this;
         $(document).ready(function () {
             that.clearPlaceHolder();
+            $('#description').on('focus', function () {
+                $(window).scrollTop(10);
+                var keyboard_shown = $(window).scrollTop() > 0;
+                $(window).scrollTop(0);
+                // $('#front').append(keyboard_shown?'keyboard ':'nokeyboard ');
+            });
+            /*
+            if (/Mobi/i.test(navigator.userAgent)) {
+                  $('html').css({"overflow":"auto"});
+                  $('body').css({"height":"auto"});
+                  $('body').css({"overflow":"auto"});
+                  $('.scrollable').css({"position":"inherit"});
+              }*/
             $("[contenteditable]").focusout(function () {
                 var element = $(this);
                 if (!element.text().trim().length) {
@@ -3762,6 +3775,24 @@ var Story1Component = (function () {
                         that.selectElementText(lastItem, window);
                     }
                 }
+                // # check if # click
+                var el = document.getElementById("description");
+                var inputChar;
+                if (/(android)/i.test(navigator.userAgent)) {
+                    inputChar = that.getCharacterPrecedingCaret(el);
+                }
+                else {
+                    inputChar = e.key;
+                }
+                var elemPos = $('body #keym').offset();
+                $('.autotext').css('top', elemPos.top + 18 + 'px');
+                // # END check if # click
+            });
+            $("body").on('click', function (e) {
+                if (e.target.id == 'front') {
+                    $('#titre').css('opacity', '1');
+                    $('#description').removeClass('float-up');
+                }
             });
             $("#description").on('keyup', function (e) {
                 var fieldData = $(this).text();
@@ -3773,22 +3804,44 @@ var Story1Component = (function () {
                 }
                 that.enableAutoSearch(e);
                 if (that.autosearch) {
+                    //console.log('i am here null')
                     var inputKeyword = $(".keymarker").text();
                     var searchKeyword = inputKeyword;
                     if (!/(android)/i.test(navigator.userAgent)) {
                         searchKeyword = inputKeyword.substring(1, inputKeyword.length);
                     }
                     if (searchKeyword == "") {
+                        //console.log('not null')
                         $('.autotext').hide();
                         $('.list2').hide();
-                        //   $(".keymarker").remove();
+                        $('#bottom-bar').show();
+                        // set back to its position
+                        that.floatSuggestion(e, false);
                     }
                     else {
-                        $('.autotext').css('left', 'auto').css('right', 'auto').hide();
+                        $('.autotext')
+                            .css('left', 'auto')
+                            .css('right', 'auto')
+                            .css('height', '180px')
+                            .hide();
                         that.updateKeywordListByStr(searchKeyword);
+                        $('#bottom-bar').show();
+                        //console.log('asdas')
                         if (that.matchKeywords && that.matchKeywords.length) {
                             var postCss = that.getAutoListPos();
-                            $('.autotext').css('top', that.savedCords.y + 18).css('left', "6vw").show();
+                            $('#bottom-bar').hide();
+                            $('#titre').css('opacity', '0');
+                            $('.autotext').css(postCss.pos, postCss.x).show();
+                            var autoListH = that.getAutoListHeight('keyword');
+                            $('#description').addClass('float-up');
+                            // $(".autotext").css('height', autoListH).show();
+                            var elemPos = $('body #keym').offset();
+                            $('.autotext').css('top', elemPos.top + 18 + 'px');
+                            $('.list2').css('top', elemPos.top + 18 + 'px');
+                        }
+                        else {
+                            $('#titre').css('opacity', '1');
+                            $('#description').removeClass('float-up');
                         }
                     }
                 }
@@ -3819,8 +3872,11 @@ var Story1Component = (function () {
         else if ((inputChar.trim().length == 0) && this.autosearch) {
             this.autosearch = false;
             $('.autotext').hide();
+            $('#bottom-bar').show();
             this.keywordShow = false;
             this.removeTextMarker();
+            $('#titre').css('opacity', '1');
+            $('#description').removeClass('float-up');
         }
     };
     Story1Component.prototype.removeTextMarker = function () {
@@ -3857,7 +3913,7 @@ var Story1Component = (function () {
       var el = document.getElementById("description");
           var range = window.getSelection().getRangeAt(0);
       var elTxt = el.innerText;
-     
+  
        var caretOffset = this.getCaretCharacterOffsetWithin(el);
      // var caretOffset = this.getCharacterOffsetWithin(range, el);
       // var caretOffset = this. this.getCaretPosition();
@@ -3866,8 +3922,8 @@ var Story1Component = (function () {
       var lastChar = textBefore.substr(textBefore.length - 1);
      // caretPosEl.innerHTML = "Caret position: " + caretOffset;
      // console.log(caretPosEl);
-     
-     
+  
+  
      return lastChar;
   }
   getCharacterOffsetWithin(range, node) {
@@ -3924,20 +3980,27 @@ var Story1Component = (function () {
             if (e.target['id'] && e.target['id'] !== 'description') {
                 $('.autotext').hide();
                 $('.list2').hide();
+                $('#bottom-bar').show();
                 // $("#keymarker").remove();
             }
         }
     };
     Story1Component.prototype.selectKeyword = function (e, keywordObj) {
+        var _this = this;
         //console.log(keywordObj);
         e.preventDefault();
         this.selectedKeyword = keywordObj;
         setTimeout(function (that) {
             var cords = that.savedCords;
             $('.autotext').hide();
+            $('#bottom-bar').hide();
             var postCss = that.getAutoListPos();
-            $('.list2').css('left', 'auto').css('right', 'auto');
-            $('.list2').css('top', cords.y + 18).css('left', "6vw").show();
+            $('.list2').css('left', 'auto').css('right', 'auto').css('height', '180px');
+            var elemPos = $('body #keym').offset();
+            $('.list2').css('top', elemPos.top + 18 + 'px');
+            $('.list2').css(postCss.pos, postCss.x).show();
+            var autoListH = _this.getAutoListHeight('keywordcat');
+            // $(".list2").css('height', autoListH).show();
             //   that.getKeywordCategories(that.selectedKeyword);
         }, 100, this);
     };
@@ -3951,7 +4014,11 @@ var Story1Component = (function () {
                 break;
             }
         }
-        $('.list2').css('top', cords.y + 18).css('left', cords.x).show();
+        $('#bottom-bar').hide();
+        $('.list2').css('left', 'auto').css('right', 'auto').css('height', '180px');
+        $('.list2').css('left', cords.x).show();
+        var autoListH = this.getAutoListHeight('keywordcat');
+        $(".list2").show();
         this.keywordCatShow = true;
         this.selectedKeyword = selectedKeyword;
     };
@@ -3966,14 +4033,29 @@ var Story1Component = (function () {
         // currEl = "&nbsp;" + currEl + "&nbsp;";
         this.pasteKeywordHtml(currEl);
         this.autosearch = false;
+        // # set form back it's position
+        $('#titre').css('opacity', '1');
+        $('#description').removeClass('float-up');
+        // # END set form back it's position
     };
     Story1Component.prototype.onClick = function (e) {
         e.preventDefault();
         if (e.currentTarget.id === 'description') {
             $('.autotext').hide();
             $('.list2').hide();
+            $('#bottom-bar').show();
             // $(".keymarker").remove();
         }
+        else {
+            // # set form back it's position
+            $('#titre').css('opacity', '1');
+            $('#description').removeClass('float-up');
+            // # END set form back it's position
+        }
+    };
+    Story1Component.prototype.floatSuggestion = function (e, show) {
+        if (show === void 0) { show = true; }
+        console.log('nothing do here');
     };
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
@@ -4003,13 +4085,63 @@ var Story1Component = (function () {
         var posCss = { 'pos': 'left', 'x': caretXPos };
         // containerWidth < (autoTxtWidth + caretXPos + 50)
         var compareWidth = containerWidth - caretXPos;
-        if (containerWidth < 400 && (containerWidth <= autoTxtWidth + 20)) {
+        /*
+        if (containerWidth < autoTxtWidth+20) {
+            posCss = {'pos':'left', 'x':15};
+        } else if (containerWidth > autoTxtWidth+20) {
+            let testw = caretXPos + autoTxtWidth;
+            if (testw > containerWidth) {
+                let rightpos = containerWidth - testw;
+                rightpos = Math.abs(rightpos);
+                posCss = {'pos':'right', 'x':rightpos};
+            } else {
+                posCss = {'pos':'left', 'x':caretXPos};
+            }
+          //  posCss = {'pos':'right', 'x':rightPos};
+        }*/ // 415
+        if (containerWidth < 415) {
             posCss = { 'pos': 'left', 'x': 15 };
         }
-        else if (compareWidth <= (autoTxtWidth + 10)) {
-            posCss = { 'pos': 'right', 'x': compareWidth };
+        else {
+            var testw = caretXPos + autoTxtWidth;
+            if (testw < containerWidth) {
+                posCss = { 'pos': 'left', 'x': caretXPos };
+            }
+            else {
+                var rightpos = screen.width - caretXPos;
+                rightpos = Math.abs(rightpos);
+                posCss = { 'pos': 'right', 'x': rightpos };
+            }
         }
+        /*
+        if (containerWidth < 400 && (containerWidth <= autoTxtWidth+20)) {
+          posCss = {'pos':'left', 'x':15};
+        } else if (compareWidth <= (autoTxtWidth+10)) {
+          posCss = {'pos':'right', 'x':compareWidth};
+      }*/
         return posCss;
+    };
+    Story1Component.prototype.getAutoListHeight = function (type) {
+        var screenHeight = window.screen.availHeight;
+        var pageHeight = window.innerHeight;
+        if (type == 'keyword') {
+            var autoListTopPos = $(".autotext").position().top;
+            var autoListH = $(".autotext").height();
+        }
+        else if (type == 'keywordcat') {
+            var autoListTopPos = $(".list2").position().top;
+            var autoListH = $(".list2").height();
+        }
+        var bottomH = $('#bottom-bar').height();
+        // var autoListRemainH = pageHeight - autoListTopPos - bottomH - 5;
+        var autoListRemainH = pageHeight - autoListTopPos;
+        if (autoListRemainH > autoListH) {
+            autoListRemainH = autoListH; //+'px';
+        }
+        else {
+            autoListRemainH = autoListRemainH; //+'px';
+        }
+        return autoListRemainH;
     };
     Story1Component.prototype.getCharacterPrecedingCaret = function (containerEl) {
         var precedingChar = "", sel, range, precedingRange;
@@ -4056,6 +4188,7 @@ var Story1Component = (function () {
         }
         $('.autotext').hide();
         $('.list2').hide();
+        $('#bottom-bar').show();
         this.keywordShow = false;
         this.keywordCatShow = false;
         editor.normalize();
@@ -4147,10 +4280,10 @@ var Story1Component = (function () {
           precedingRange.setEndPoint("EndToStart", range);
           preceding = precedingRange.text;
       }
-    
+  
       var words = range.toString().trim().split(' '),
           lastWord = words[words.length - 1];
-          
+  
       if (lastWord) {
           var resultValue = ''; // this value is coming from some other function
           if (resultValue == lastWord) {
@@ -4158,18 +4291,18 @@ var Story1Component = (function () {
               // do nothing
           } else {
               console.log('replace word ' + lastWord);
-              
+  
               // Find word start and end
               var wordStart = range.toString().lastIndexOf(lastWord);
               var wordEnd = wordStart + lastWord.length;
               console.log("pos: (" + wordStart + ", " + wordEnd + ")");
-                             
+  
               range.setStart(containerEl.firstChild, wordStart);
               range.setEnd(containerEl.firstChild, wordEnd);
               range.deleteContents();
               range.insertNode(document.createTextNode(resultValue));
               // delete That specific word and replace if with resultValue
-    
+  
               // Merge multiple text nodes
               containerEl.normalize();
           }
@@ -4182,7 +4315,7 @@ var Story1Component = (function () {
         this.titre_counter = e.target.value.length;
     };
     /*
-    
+  
       onKey(e: any) {
         //e.target.value = e.target.value.trim()
         //console.log(e.target.value);
@@ -4197,17 +4330,17 @@ var Story1Component = (function () {
         if (e.target.value == "") {
           this.resultshow = true;
         }
-    
+  
         if (e.target.value.length >= 1) {
           this.textcount = false;
         }
         else {
           this.textcount = true;
         }
-    
+  
         var tag = e.target.value.trim().split("#").pop();
        // console.log(tag);
-    
+  
         if (tag == "Musique" || tag == "musique") {
           console.log("I am in true");
           this.resultshow = true;
@@ -4224,7 +4357,7 @@ var Story1Component = (function () {
         } else {
           //console.log("I am in false");
         }
-    
+  
       }
       */
     Story1Component.prototype.hideresults = function () {
