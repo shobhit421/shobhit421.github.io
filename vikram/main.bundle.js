@@ -3785,8 +3785,14 @@ var Story1Component = (function () {
                     inputChar = e.key;
                 }
                 var elemPos = $('body #keym').offset();
-                $('.autotext').css('top', elemPos.top + 'px');
+                $('.autotext').css('top', elemPos.top + 18 + 'px');
                 // # END check if # click
+            });
+            $("body").on('click', function (e) {
+                if (e.target.id == 'front') {
+                    $('#titre').css('opacity', '1');
+                    $('#description').removeClass('float-up');
+                }
             });
             $("#description").on('keyup', function (e) {
                 var fieldData = $(this).text();
@@ -4044,20 +4050,7 @@ var Story1Component = (function () {
     };
     Story1Component.prototype.floatSuggestion = function (e, show) {
         if (show === void 0) { show = true; }
-        var fromTop = $('.top-div').height();
-        var currentPos = e.screenY + 'px';
-        // reset the suggestion list Y pos
-        $('.autolist').css('top', currentPos);
-        // keyCodes may different on OS and versions !
-        if (e.keyCode == 51
-            || e.keyCode == 35
-            || e.keyCode == 229
-                &&
-                    (show)) {
-            $('#titre').css('opacity', '0');
-            $('#description').addClass('float-up');
-            // this.enableAutoSearch(e);
-        }
+        console.log('nothing do here');
     };
     Story1Component.prototype.updateKeywordListByStr = function (inputStr) {
         this.matchKeywords = [];
